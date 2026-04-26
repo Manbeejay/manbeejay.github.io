@@ -1,7 +1,3 @@
----
----
-
-@import "{{ site.theme }}";
 title: Ground Floor
 email: manbeejay@outlook.com
 description: >- 
@@ -9,7 +5,3 @@ description: >-
 baseurl: "" # The subpath of your site, e.g., /blog
 url: "https://manbeejay.github.io" # The base hostname
 theme: jekyll-theme-cayman
-remote_theme: pages-themes/cayman@v0.2.0
-plugins:
-- jekyll-remote-theme # add this line to the plugins list if you already have one
-gem "github-pages", group: :jekyll_plugins
