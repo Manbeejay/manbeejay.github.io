@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="I spent a week rewriting a Next.js app using React Server Components. Here's what I learned, what worked, and what I'd do differently." />
-  <title>React Server Components, Explained Simply — Alex Mercer</title>
+  <title>React Server Components, Explained Simply - BJ Chiawa</title>
   <link rel="stylesheet" href="../style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
   <style>
@@ -391,14 +391,12 @@
     <article class="post-body">
 
       <p>
-        Last month I spent a week migrating a medium-sized Next.js app to use React Server Components properly —
-        not just sprinkling in <code>async</code> on a few pages, but actually thinking through the
+        Last month, I spent a week migrating a medium-sized Next.js app to use React Server Components properly - not just sprinkling in <code>async</code> on a few pages, but actually thinking through the
         component tree and moving data fetching where it belonged. The app got faster. The code got simpler
         in some places and more confusing in others. I made some bad decisions early that cost me time later.
       </p>
       <p>
-        This post is what I wished I had before I started. No fluff, no "RSC will change everything" hype —
-        just a clear explanation of what they are, how they differ from what you already know, and
+        This post is what I wished I had before I started. No fluff, no "RSC will change everything" hype - just a clear explanation of what they are, how they differ from what you already know, and
         when to actually reach for them.
       </p>
 
@@ -406,14 +404,14 @@
       <p>
         Before React Server Components, a typical React app had one fundamental shape: JavaScript
         runs in the browser, components render in the browser, and data comes from an API that
-        your frontend calls. Server-Side Rendering (SSR) muddied this slightly — you could render
-        components on the server for the first HTML payload — but the components themselves were still
-        written as if they'd run on the client. The same bundle shipped to the browser regardless.
+        your frontend calls. Server-Side Rendering (SSR) muddied this slightly - you could render
+        components on the server for the first HTML payload - but the components themselves were still
+        written as if they'd run on the client. The same bundle, shipped to the browser regardless.
       </p>
       <p>
         This created a pattern you've almost certainly lived with: fetch data in <code>useEffect</code>,
         show a loading state, render when the data arrives. For every component that needed remote data,
-        you added a round trip. Nested components meant nested round trips. The bundle grew because every
+        you added a round-trip. Nested components meant nested round-trips. The bundle grew because every
         library your component imported ended up in the client bundle, even libraries the user never
         directly interacted with.
       </p>
@@ -427,7 +425,7 @@
       <p>
         A Server Component is a React component that runs only on the server. It never ships to the
         browser. It can't use <code>useState</code>, <code>useEffect</code>, event handlers, or any
-        browser API — because the browser never runs it. What it can do is read databases directly,
+        browser API - because the browser never runs it. What it can do is read databases directly,
         call internal APIs without an HTTP round trip, access the filesystem, use server-only secrets,
         and import large libraries without adding a single byte to the client bundle.
       </p>
@@ -512,7 +510,7 @@
       <p>
         That last row is the subtle one. A Client Component cannot import a Server Component directly,
         because the client doesn't run Server Component code. But a Server Component can pass another
-        Server Component as a prop to a Client Component — the server resolves both before anything
+        Server Component as a prop to a Client Component - the server resolves both before anything
         reaches the browser.
       </p>
 
@@ -561,7 +559,7 @@
       <p>
         The database query runs on the server. The chart interaction runs in the browser.
         The <code>recharts</code> library ships to the client (because <code>StatsChart</code>
-        uses it), but the database driver does not — it only exists in the Server Component,
+        uses it), but the database driver does not - it only exists in the Server Component,
         which never reaches the browser.
       </p>
 
@@ -594,7 +592,7 @@
       <h3>Fetching in the wrong place</h3>
       <p>
         I had a habit of fetching at the page level and drilling props down. RSC removes the need
-        for this. Each Server Component can fetch its own data directly — there's no extra HTTP
+        for this. Each Server Component can fetch its own data directly - there's no extra HTTP
         round trip, and Next.js deduplicates identical fetch calls within a request. A
         <code>UserCard</code> component can fetch the user itself. It doesn't need the page to pass
         it down. This made my component tree much easier to read once I rewired my thinking.
@@ -633,7 +631,7 @@
       <p>
         Start from the leaves, not the root. I began by converting page-level components first,
         which meant everything below them was broken until I'd worked my way down. Better to start
-        with small, data-only leaf components — product cards, user avatars, article bodies — and
+        with small, data-only leaf components - product cards, user avatars, article bodies — and
         move up from there. Each conversion is contained and testable.
       </p>
       <p>
@@ -644,7 +642,7 @@
       </p>
       <p>
         The performance gains are real but not automatic. RSC gives you the tools to improve
-        bundle size and eliminate unnecessary round trips. Whether you actually get those gains
+        bundle size and eliminate unnecessary round-trips. Whether you actually get those gains
         depends on where you draw the boundaries. A thoughtless migration gives you
         the same bundle size you started with, plus a more confusing codebase.
       </p>
@@ -654,7 +652,7 @@
       <p>
         React Server Components are not a replacement for Client Components. They're a new tool
         with a specific job: running code on the server that has no business running in the browser.
-        If you approach them that way — rather than as a framework rule to comply with — they start
+        If you approach them that way — rather than as a framework rule to comply with - they start
         making sense quickly.
       </p>
 
