@@ -1,22 +1,14 @@
 # manbeejay.github.io
 manbeejay repository personal portfolio
 README.md — GitHub Profile
-<!-- BANNER / HEADER --> <div align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,50:16213e,100:0f3460&height=200&section=header&text=BJ%20Chiawa&fontSize=60&fontColor=c9a84c&fontAlignY=38&desc=Engineer%20%7C%20Builder%20%7C%20Problem%20Solver&descAlignY=60&descColor=ede8da&animation=fadeIn" alt="Header Banner" /> </div> <!-- INTRO --> <div align="center"> <!-- Profile views counter — auto-updates -->
-￼
+<!-- BANNER / HEADER --> <div align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,50:16213e,100:0f3460&height=200&section=header&text=BJ%20Chiawa&fontSize=60&fontColor=c9a84c&fontAlignY=38&desc=Engineer%20%7C%20Builder%20%7C%20Problem%20Solver&descAlignY=60&descColor=ede8da&animation=fadeIn" alt="Header Banner" /> </div> <!-- INTRO --> <div align="center"> 
+<!-- Profile views counter — auto-updates -->
+￼![Profile Views](https://komarev.com/ghpvc/?username=manbeejay&color=c9a84c&style=flat-square&label=Profile+Views)
 <!-- GitHub followers badge -->
-￼
+￼![GitHub followers](https://img.shields.io/github/followers/manbeejay?label=Followers&style=flat-square&color=c9a84c&labelColor=1a1a2e)
 </div>
 
 <!-- INTRO -->
-<div align="center">
-
-  <!-- Profile views counter — auto-updates -->
-  ![Profile Views](https://komarev.com/ghpvc/?username=manbeejay&color=c9a84c&style=flat-square&label=Profile+Views)
-  
-  <!-- GitHub followers badge -->
-  ![GitHub followers](https://img.shields.io/github/followers/manbeejay?label=Followers&style=flat-square&color=c9a84c&labelColor=1a1a2e)
-
-</div>
 
 👋 Hey, I'm BJ
 I'm a Nigerian engineer who builds things that work. I've spent years solving real problems - systems that hold up under pressure, products people actually use, and infrastructure that doesn't fall apart at 2 am.
