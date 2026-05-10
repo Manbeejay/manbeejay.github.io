@@ -31,7 +31,7 @@ Right now, I'm based in **Enugu, Nigeria**, working with clients and collaborato
 - 🔭 Currently working on **[Your Current Project Name]** — [one sentence on what it does]
 - 🛠️ I specialise in **[e.g. Civil/Environmental/Biosystems Engineering, Software Systems, Embedded Systems]**
 - 🌍 Open to collaborations on projects that matter in Africa and beyond
-- 📬 Reach me at **manbeejay@gmail.com** or on LinkedIn
+- 📬 Reach me at **manbeejay@outlook.com** or on LinkedIn
 
 ---
 
@@ -196,7 +196,7 @@ Right now, I'm based in **Enugu, Nigeria**, working with clients and collaborato
     <img src="https://img.shields.io/badge/X%20%2F%20Twitter-000000?style=for-the-badge&logo=x&logoColor=white" />
   </a>
   &nbsp;
-  <a href="mailto:manbeejay@gmail.com">
+  <a href="mailto:manbeejay@outlook.com">
     <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" />
   </a>
   &nbsp;
