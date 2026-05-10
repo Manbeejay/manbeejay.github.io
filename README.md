@@ -30,7 +30,7 @@ Right now, I'm based in **Enugu, Nigeria**, working with clients and collaborato
 
 - 🔭 Currently working on **[Your Current Project Name]** — [one sentence on what it does]
 - 🛠️ I specialise in **[e.g. Civil/Environmental/Biosystems Engineering, Software Systems, Embedded Systems]**
-- 🌍 Open to collaborations on projects that matter in Africa
+- 🌍 Open to collaborations on projects that matter in Africa and beyond
 - 📬 Reach me at **manbeejay@gmail.com** or on LinkedIn
 
 ---
