@@ -4,4 +4,3 @@ description: >-
   The Winding Staircase
 baseurl: "" # The subpath of your site, e.g., /blog
 url: "https://manbeejay.github.io" # The base hostname
-theme: jekyll-theme-cayman
