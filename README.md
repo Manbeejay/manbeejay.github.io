@@ -7,6 +7,17 @@ README.md — GitHub Profile
 ￼
 </div>
 
+<!-- INTRO -->
+<div align="center">
+
+  <!-- Profile views counter — auto-updates -->
+  ![Profile Views](https://komarev.com/ghpvc/?username=manbeejay&color=c9a84c&style=flat-square&label=Profile+Views)
+  
+  <!-- GitHub followers badge -->
+  ![GitHub followers](https://img.shields.io/github/followers/manbeejay?label=Followers&style=flat-square&color=c9a84c&labelColor=1a1a2e)
+
+</div>
+
 👋 Hey, I'm BJ
 I'm a Nigerian engineer who builds things that work. I've spent years solving real problems - systems that hold up under pressure, products people actually use, and infrastructure that doesn't fall apart at 2 am.
 I work at the intersection of engineering rigour and practical execution. I don't just write code or draw plans; I think through the full picture and build accordingly.
