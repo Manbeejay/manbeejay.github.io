@@ -11,10 +11,12 @@ README.md — GitHub Profile
 I'm a Nigerian engineer who builds things that work. I've spent years solving real problems - systems that hold up under pressure, products people actually use, and infrastructure that doesn't fall apart at 2 am.
 I work at the intersection of engineering rigour and practical execution. I don't just write code or draw plans; I think through the full picture and build accordingly.
 Right now, I'm based in Enugu, Nigeria, working with clients and collaborators across the continent and beyond.
-	-	🔭 Currently working on [Your Current Project Name] — [one sentence on what it does]
-	-	🛠️ I specialise in [e.g. Civil/Environmental/Biosystems Engineering, Software Systems, Embedded Systems]
-	-	🌍 Open to collaborations on projects that matter in Africa
-	-	📬 Reach me at manbeejay@gmail.com or on LinkedIn
+<ul>
+	<li>🔭 Currently working on [Your Current Project Name] — [one sentence on what it does]</li>
+	<li>🛠️ I specialise in [e.g. Civil/Environmental/Biosystems Engineering, Software Systems, Embedded Systems]</li>
+	<li>🌍 Open to collaborations on projects that matter in Africa</ul>
+	<li>📬 Reach me at manbeejay@gmail.com or on LinkedIn</li>
+</ul>
 
 🧰 Tools & Technologies
 <!-- INSTRUCTIONS: Pick only what you actually use. Delete the rest. Generate any badge at: https://shields.io Icon slugs (for SimpleIcons): https://simpleicons.org Format: ![Name](https://img.shields.io/badge/Name-HexColor?style=flat-square&logo=SLUG&logoColor=white) -->
