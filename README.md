@@ -28,8 +28,8 @@ I work at the intersection of engineering rigour and practical execution. I don'
 
 Right now, I'm based in **Enugu, Nigeria**, working with clients and collaborators across the continent and beyond.
 
-- 🔭 Currently working on **Market Link Nigeria** - Web App to link Farmers in Nigeria direct to Buyers
-- 🛠️ I specialise in **[e.g. Civil/Environmental/Biosystems Engineering, Software Systems, Embedded Systems]**
+- 🔭 Currently working on **Market Link Nigeria** - Web App to link Farmers in Nigeria directly to Buyers.
+- 🛠️ I specialise in **Mechanical/Biosystems/Civil/Environmental Engineering, Software Systems, Embedded Systems.**
 - 🌍 Open to collaborations on projects that matter in Africa and beyond
 - 📬 Reach me at **manbeejay@outlook.com** or on LinkedIn
 
