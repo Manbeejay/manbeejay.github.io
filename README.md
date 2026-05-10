@@ -4,7 +4,7 @@ README.md — GitHub Profile
 <!-- BANNER / HEADER --> 
 <div align="center"> 
 	
-	<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,50:16213e,100:0f3460&height=200&section=header&text=BJ%20Chiawa&fontSize=60&fontColor=c9a84c&fontAlignY=38&desc=Engineer%20%7C%20Builder%20%7C%20Problem%20Solver&descAlignY=60&descColor=ede8da&animation=fadeIn" alt="Header Banner" /> 
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,50:16213e,100:0f3460&height=200&section=header&text=BJ%20Chiawa&fontSize=60&fontColor=c9a84c&fontAlignY=38&desc=Engineer%20%7C%20Builder%20%7C%20Problem%20Solver&descAlignY=60&descColor=ede8da&animation=fadeIn" alt="Header Banner" /> 
 
 </div> 
 
