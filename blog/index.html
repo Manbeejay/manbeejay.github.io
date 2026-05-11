@@ -3,492 +3,556 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="BJ Chiawa - Designer & Developer crafting thoughtful digital products." />
-  <title>BJ Chiawa - Designer &amp; Developer</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Writing by Alex Mercer on design, engineering, and freelancing." />
+  <title>Writing — Alex Mercer</title>
+  <link rel="stylesheet" href="../style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+  <style>
+    /* ── Blog Index Page ─────────────────────────── */
+    .blog-index-hero {
+      padding-top: var(--nav-h);
+      padding-bottom: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-index-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,168,76,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(100,80,200,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .blog-index-hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 80% 40%, black 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .blog-index-hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: 5rem 0 4rem;
+      max-width: 680px;
+    }
+
+    .blog-index-hero-inner .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-index-hero-inner .eyebrow-line {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .blog-index-hero-inner .eyebrow span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .blog-index-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    .blog-index-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .blog-index-desc {
+      font-size: 1rem;
+      color: var(--text-sub);
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    /* ── Filter bar ────────────────────────────── */
+    .filter-bar {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      background: var(--bg-alt);
+      position: sticky;
+      top: var(--nav-h);
+      z-index: 10;
+    }
+
+    .filter-inner {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-right: 0.5rem;
+    }
+
+    .filter-btn {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      background: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      color: var(--accent);
+      border-color: var(--border-accent);
+      background: var(--accent-glow);
+    }
+
+    /* ── Post list ─────────────────────────────── */
+    .blog-index-body {
+      padding: 4rem 0 7rem;
+    }
+
+    /* Featured post — first one, larger */
+    .featured-post {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--bg-alt);
+      margin-bottom: 2rem;
+      transition: border-color 0.3s, transform 0.3s;
+      text-decoration: none;
+    }
+
+    .featured-post:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-4px);
+    }
+
+    .featured-post-img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .featured-post-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease, filter 0.4s;
+      filter: grayscale(20%);
+    }
+
+    .featured-post:hover .featured-post-img img {
+      transform: scale(1.04);
+      filter: grayscale(0%);
+    }
+
+    .featured-post-body {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.63rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .featured-badge::before {
+      content: '';
+      display: block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .featured-post-body .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .featured-post-body h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.25rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 1rem;
+      transition: color 0.2s;
+    }
+
+    .featured-post:hover .featured-post-body h2 { color: var(--accent); }
+
+    .featured-post-body p {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Post count */
+    .post-count {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 1.5rem;
+    }
+
+    .post-count span { color: var(--accent); }
+
+    /* Regular post grid */
+    .blog-index-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Post list view (row layout) */
+    .post-list-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--bg-alt);
+      margin-bottom: 1.25rem;
+      transition: border-color 0.3s, transform 0.3s;
+      text-decoration: none;
+    }
+
+    .post-list-item:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+    }
+
+    .post-list-item-img {
+      overflow: hidden;
+    }
+
+    .post-list-item-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease, filter 0.4s;
+      filter: grayscale(20%);
+    }
+
+    .post-list-item:hover .post-list-item-img img {
+      transform: scale(1.05);
+      filter: grayscale(0%);
+    }
+
+    .post-list-item-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .post-list-item-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+      transition: color 0.2s;
+    }
+
+    .post-list-item:hover h3 { color: var(--accent); }
+
+    .post-list-item-body p {
+      font-size: 0.82rem;
+      color: var(--text-sub);
+      font-weight: 300;
+      line-height: 1.7;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* ── Newsletter strip ──────────────────────── */
+    .newsletter-strip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .newsletter-strip h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .newsletter-strip p {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      font-weight: 300;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .newsletter-form input {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.75rem 1.1rem;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 300;
+      outline: none;
+      min-width: 220px;
+      transition: border-color 0.2s;
+    }
+
+    .newsletter-form input:focus { border-color: var(--accent); }
+    .newsletter-form input::placeholder { color: var(--text-muted); }
+
+    .newsletter-form button {
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      border-radius: 3px;
+      padding: 0.75rem 1.5rem;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .newsletter-form button:hover {
+      background: var(--accent-dim);
+      transform: translateY(-1px);
+    }
+
+    /* ── Responsive ────────────────────────────── */
+    @media (max-width: 900px) {
+      .featured-post {
+        grid-template-columns: 1fr;
+      }
+      .featured-post-img { aspect-ratio: 16/9; }
+      .featured-post-body { padding: 2rem; }
+      .post-list-item { grid-template-columns: 140px 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .blog-index-hero-inner { padding: 3rem 0 2.5rem; }
+      .post-list-item { grid-template-columns: 1fr; }
+      .post-list-item-img { aspect-ratio: 16/9; }
+      .newsletter-strip { padding: 1.75rem; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-form input { min-width: 100%; }
+    }
+  </style>
 </head>
 <body>
 
 <!-- ── Navigation ───────────────────────────────── -->
 <nav>
   <div class="nav-inner">
-    <a href="#hero" class="nav-logo">BJ<span>.</span></a>
+    <a href="../index.html" class="nav-logo">Alex<span>.</span></a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#blog">Writing</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#services">Services</a></li>
+      <li><a href="index.html" style="color: var(--accent);">Writing</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Hire Me</a>
+    <a href="../index.html#contact" class="nav-cta">Hire Me</a>
     <div class="hamburger" role="button" aria-label="Open menu" tabindex="0">
       <span></span><span></span><span></span>
     </div>
   </div>
 </nav>
 
-<!-- Mobile Menu -->
 <div class="mobile-menu">
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#blog">Writing</a>
-  <a href="#projects">Projects</a>
-  <a href="#contact">Contact</a>
+  <a href="../index.html#about">About</a>
+  <a href="../index.html#services">Services</a>
+  <a href="index.html">Writing</a>
+  <a href="../index.html#projects">Projects</a>
+  <a href="../index.html#contact">Contact</a>
 </div>
 
-<!-- ── Hero ─────────────────────────────────────── -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid-bg"></div>
+<!-- ── Blog Hero ────────────────────────────────── -->
+<section class="blog-index-hero">
+  <div class="blog-index-hero-bg"></div>
+  <div class="blog-index-hero-grid"></div>
   <div class="container">
-    <div class="hero-inner">
+    <div class="blog-index-hero-inner">
+      <div class="eyebrow">
+        <div class="eyebrow-line"></div>
+        <span>Writing</span>
+      </div>
+      <h1 class="blog-index-title">Thoughts on design,<br>code, and <em>craft</em></h1>
+      <p class="blog-index-desc">
+        I write about building digital products — what works, what doesn't, and what
+        I'm still figuring out. No newsletter cadence, no content calendar. Just posts
+        when something is worth saying.
+      </p>
+    </div>
+  </div>
+</section>
 
-      <div class="hero-text">
-        <div class="hero-eyebrow">
-          <div class="hero-eyebrow-line"></div>
-          <span>Available for work</span>
+<!-- ── Filter Bar ────────────────────────────────── -->
+<div class="filter-bar">
+  <div class="container">
+    <div class="filter-inner">
+      <span class="filter-label">Filter</span>
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="design">Design</button>
+      <button class="filter-btn" data-filter="engineering">Engineering</button>
+      <button class="filter-btn" data-filter="career">Career</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Post Listing ──────────────────────────────── -->
+<section class="blog-index-body">
+  <div class="container">
+
+    <!-- Featured post -->
+    <a href="the-case-for-boring-design.html" class="featured-post reveal" data-category="design">
+      <div class="featured-post-img">
+        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=900&q=80" alt="The Case for Boring Design" loading="lazy" />
+      </div>
+      <div class="featured-post-body">
+        <span class="featured-badge">Latest Post</span>
+        <div class="blog-meta">
+          <span class="blog-category">Design</span>
+          <span class="blog-dot"></span>
+          <span class="blog-date">April 12, 2025</span>
+          <span class="blog-dot"></span>
+          <span class="blog-date">6 min read</span>
         </div>
-        <h1 class="hero-name">BJ<br><em>Chiawa</em></h1>
-        <p class="hero-title">Product Designer &amp; Full-Stack Developer</p>
-        <p class="hero-bio">
-          I build digital products that work - clean interfaces, solid code,
-          and experiences people actually enjoy using. Based in Enugu,
-          working with clients worldwide.
+        <h2>The Case for Boring Design</h2>
+        <p>
+          Why the most effective interfaces are often the ones nobody talks about,
+          and how chasing novelty quietly breaks products that should just work.
         </p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn-primary">
-            View My Work
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#contact" class="btn-outline">Get in Touch</a>
-        </div>
+        <span class="blog-read-more">
+          Read Post
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
       </div>
+    </a>
 
-      <div class="hero-photo-wrap">
-        <div class="hero-photo-frame">
-          <!-- Replace src with your actual photo -->
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Alex Mercer" />
+    <!-- Post count -->
+    <p class="post-count reveal"><span>3</span> posts published</p>
+
+    <!-- Remaining posts as list items -->
+    <div id="post-list">
+
+      <a href="react-server-components-explained.html" class="post-list-item reveal" data-category="engineering">
+        <div class="post-list-item-img">
+          <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=400&q=75" alt="React Server Components" loading="lazy" />
         </div>
-        <div class="hero-photo-border"></div>
-        <div class="hero-stat-badge">
-          <div class="num" data-target="50">50+</div>
-          <div class="label">Projects Delivered</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── Social Strip ──────────────────────────────── -->
-<section id="social">
-  <div class="container">
-    <div class="social-strip">
-
-      <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener" class="social-link">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        Twitter / X
-      </a>
-
-      <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" class="social-link">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-        LinkedIn
-      </a>
-
-      <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="social-link">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        GitHub
-      </a>
-
-      <a href="https://dribbble.com/yourprofile" target="_blank" rel="noopener" class="social-link">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.017-8.04 6.358 1.73 1.51 3.998 2.42 6.474 2.42 1.18 0 2.314-.19 3.376-.53zm-14.27-2.096c.23-.38 3.01-4.82 8.3-6.498.145-.048.29-.09.44-.133-.28-.633-.59-1.265-.91-1.882-5.17 1.55-10.2 1.485-10.655 1.47.002 2.647.876 5.088 2.372 7.03l.453.013zm-2.1-8.326c.457.013 4.873.006 9.71-1.32-1.74-3.09-3.61-5.7-3.893-6.07C3.42 5.01 1.518 7.75 1.635 12.028zm7.14-7.53c.3.39 2.18 3 3.9 6.15 3.72-1.394 5.295-3.507 5.485-3.773-1.49-1.327-3.434-2.13-5.57-2.13-.64 0-1.265.075-1.87.21.02-.153.044-.306.055-.457z"/></svg>
-        Dribbble
-      </a>
-
-      <a href="https://youtube.com/@yourchannel" target="_blank" rel="noopener" class="social-link">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        YouTube
-      </a>
-
-      <a href="mailto:hello@alexmercer.dev" class="social-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        Email Me
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── About ─────────────────────────────────────── -->
-<section id="about">
-  <div class="container">
-    <div class="about-grid">
-
-      <div class="about-image-col reveal">
-        <!-- Replace with your own photo -->
-        <img class="about-img" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=700&q=80" alt="Alex at work" />
-        <div class="about-img-accent"></div>
-      </div>
-
-      <div class="about-text reveal" data-delay="120">
-        <span class="tag">About Me</span>
-        <h2 class="section-title">A builder who cares<br>about the details</h2>
-        <div class="divider"></div>
-        <p style="color:var(--text-sub); font-size:0.95rem; font-weight:300; line-height:1.9; margin-bottom:1.25rem;">
-          I've spent the past 7 years designing and building products for startups, agencies,
-          and global brands. My work sits at the intersection of design and engineering —
-          I can take an idea from sketch to shipped code.
-        </p>
-        <p style="color:var(--text-sub); font-size:0.95rem; font-weight:300; line-height:1.9; margin-bottom:2rem;">
-          Before going independent, I led design at a fintech startup in Lagos and worked
-          as a senior frontend engineer for a London-based SaaS company. I now take on
-          select freelance projects and consulting work.
-        </p>
-        <div class="about-skills">
-          <span class="skill-pill">UI / UX Design</span>
-          <span class="skill-pill">React</span>
-          <span class="skill-pill">Node.js</span>
-          <span class="skill-pill">Figma</span>
-          <span class="skill-pill">TypeScript</span>
-          <span class="skill-pill">Next.js</span>
-          <span class="skill-pill">Design Systems</span>
-          <span class="skill-pill">PostgreSQL</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── Services ──────────────────────────────────── -->
-<section id="services">
-  <div class="container">
-    <div class="reveal">
-      <span class="tag">What I Do</span>
-      <h2 class="section-title">Services</h2>
-      <p class="section-sub">I work with clients who want clear thinking, clean execution, and no surprises.</p>
-    </div>
-    <div class="services-grid">
-
-      <div class="service-card reveal" data-delay="0">
-        <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        </div>
-        <h3>Product Design</h3>
-        <p>User research, wireframes, prototypes, and high-fidelity UI. I design products people find straightforward to use.</p>
-      </div>
-
-      <div class="service-card reveal" data-delay="80">
-        <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        </div>
-        <h3>Frontend Development</h3>
-        <p>Fast, accessible, mobile-first interfaces built in React and Next.js. Your Figma file becomes production-ready code.</p>
-      </div>
-
-      <div class="service-card reveal" data-delay="160">
-        <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.657 4.03 3 9 3s9-1.343 9-3V5"/><path d="M3 12c0 1.657 4.03 3 9 3s9-1.343 9-3"/></svg>
-        </div>
-        <h3>Full-Stack Engineering</h3>
-        <p>APIs, databases, auth, payments. I build the backend that powers your product and keeps it running reliably.</p>
-      </div>
-
-      <div class="service-card reveal" data-delay="240">
-        <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
-        <h3>Design Systems</h3>
-        <p>Component libraries and token-based design systems that keep your product consistent as it grows.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── Blog ──────────────────────────────────────── -->
-<section id="blog">
-  <div class="container">
-    <div class="blog-header reveal">
-      <div>
-        <span class="tag">Writing</span>
-        <h2 class="section-title">Latest Posts</h2>
-      </div>
-      <a href="blog/index.html" class="view-all">
-        All Posts
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-
-    <div class="blog-grid">
-
-      <a href="blog/the-case-for-boring-design.html" class="blog-card reveal" data-delay="0">
-        <div class="blog-card-img">
-          <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&q=75" alt="The case for boring design" loading="lazy" />
-        </div>
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span class="blog-category">Design</span>
-            <span class="blog-dot"></span>
-            <span class="blog-date">April 12, 2025</span>
-          </div>
-          <h3>The Case for Boring Design</h3>
-          <p>Why the most effective interfaces are often the ones nobody talks about — and how chasing novelty quietly breaks products.</p>
-          <span class="blog-read-more">Read Post <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-        </div>
-      </a>
-
-      <a href="blog/react-server-components-explained.html" class="blog-card reveal" data-delay="100">
-        <div class="blog-card-img">
-          <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=600&q=75" alt="React Server Components" loading="lazy" />
-        </div>
-        <div class="blog-card-body">
-          <div class="blog-meta">
+        <div class="post-list-item-body">
+          <div class="blog-meta" style="margin-bottom: 0.6rem;">
             <span class="blog-category">Engineering</span>
             <span class="blog-dot"></span>
             <span class="blog-date">March 5, 2025</span>
+            <span class="blog-dot"></span>
+            <span class="blog-date">8 min read</span>
           </div>
           <h3>React Server Components, Explained Simply</h3>
           <p>I spent a week rewriting a Next.js app using RSC. Here's what I learned, what worked, and what I'd do differently.</p>
-          <span class="blog-read-more">Read Post <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </div>
       </a>
 
-      <a href="blog/freelancing-lessons-year-three.html" class="blog-card reveal" data-delay="200">
-        <div class="blog-card-img">
-          <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=75" alt="Freelancing lessons" loading="lazy" />
+      <a href="freelancing-lessons-year-three.html" class="post-list-item reveal" data-category="career">
+        <div class="post-list-item-img">
+          <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&q=75" alt="Freelancing lessons" loading="lazy" />
         </div>
-        <div class="blog-card-body">
-          <div class="blog-meta">
+        <div class="post-list-item-body">
+          <div class="blog-meta" style="margin-bottom: 0.6rem;">
             <span class="blog-category">Career</span>
             <span class="blog-dot"></span>
             <span class="blog-date">January 20, 2025</span>
+            <span class="blog-dot"></span>
+            <span class="blog-date">9 min read</span>
           </div>
           <h3>Three Years Freelancing: Lessons I Wish I Had Earlier</h3>
           <p>On pricing, client selection, contracts, and the one habit that changed how I work.</p>
-          <span class="blog-read-more">Read Post <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </div>
       </a>
 
     </div>
-  </div>
-</section>
 
-<!-- ── Projects ──────────────────────────────────── -->
-<section id="projects">
-  <div class="container">
-    <div class="reveal">
-      <span class="tag">Projects</span>
-      <h2 class="section-title">Selected Work</h2>
-      <p class="section-sub">A handful of projects from the past few years. Each one taught me something.</p>
-    </div>
-    <div class="projects-grid">
-
-      <a href="https://github.com/yourusername/project-one" target="_blank" rel="noopener" class="project-card reveal" data-delay="0">
-        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=75" alt="Fintech Dashboard" loading="lazy" />
-        <div class="project-overlay">
-          <div class="project-tech">
-            <span class="project-tech-tag">React</span>
-            <span class="project-tech-tag">TypeScript</span>
-          </div>
-          <h3>Fintech Dashboard</h3>
-          <p>A real-time analytics dashboard for a payments platform. Handles millions of rows of transaction data.</p>
-          <div class="project-links">
-            <span class="project-link">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              Code
-            </span>
-            <span class="project-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Live
-            </span>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://github.com/yourusername/project-two" target="_blank" rel="noopener" class="project-card reveal" data-delay="80">
-        <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=75" alt="E-commerce Platform" loading="lazy" />
-        <div class="project-overlay">
-          <div class="project-tech">
-            <span class="project-tech-tag">Next.js</span>
-            <span class="project-tech-tag">Stripe</span>
-          </div>
-          <h3>E-Commerce Platform</h3>
-          <p>Full-stack storefront with cart, checkout, inventory management, and an admin panel.</p>
-          <div class="project-links">
-            <span class="project-link">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              Code
-            </span>
-            <span class="project-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Live
-            </span>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://github.com/yourusername/project-three" target="_blank" rel="noopener" class="project-card reveal" data-delay="160">
-        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=75" alt="Mobile App" loading="lazy" />
-        <div class="project-overlay">
-          <div class="project-tech">
-            <span class="project-tech-tag">React Native</span>
-            <span class="project-tech-tag">Expo</span>
-          </div>
-          <h3>Wellness Mobile App</h3>
-          <p>Cross-platform iOS and Android app for habit tracking, built for a health-tech startup.</p>
-          <div class="project-links">
-            <span class="project-link">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              Code
-            </span>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://github.com/yourusername/project-four" target="_blank" rel="noopener" class="project-card reveal" data-delay="0">
-        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=75" alt="SaaS App" loading="lazy" />
-        <div class="project-overlay">
-          <div class="project-tech">
-            <span class="project-tech-tag">Node.js</span>
-            <span class="project-tech-tag">PostgreSQL</span>
-          </div>
-          <h3>SaaS Project Manager</h3>
-          <p>Team collaboration tool with real-time updates, file sharing, and time tracking built in.</p>
-          <div class="project-links">
-            <span class="project-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Live
-            </span>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://github.com/yourusername/project-five" target="_blank" rel="noopener" class="project-card reveal" data-delay="80">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75" alt="Brand Design" loading="lazy" />
-        <div class="project-overlay">
-          <div class="project-tech">
-            <span class="project-tech-tag">Figma</span>
-            <span class="project-tech-tag">Branding</span>
-          </div>
-          <h3>Brand Identity System</h3>
-          <p>Complete visual identity for a Lagos-based logistics company: logo, typography, color, and guidelines.</p>
-          <div class="project-links">
-            <span class="project-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Case Study
-            </span>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://github.com/yourusername/project-six" target="_blank" rel="noopener" class="project-card reveal" data-delay="160">
-        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=75" alt="Data visualisation" loading="lazy" />
-        <div class="project-overlay">
-          <div class="project-tech">
-            <span class="project-tech-tag">D3.js</span>
-            <span class="project-tech-tag">Python</span>
-          </div>
-          <h3>Data Visualisation Tool</h3>
-          <p>Interactive charts and maps for a research institute, processing large public health datasets.</p>
-          <div class="project-links">
-            <span class="project-link">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              Code
-            </span>
-            <span class="project-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Live
-            </span>
-          </div>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── Contact ───────────────────────────────────── -->
-<section id="contact">
-  <div class="container">
-    <div class="contact-grid">
-
-      <div class="reveal">
-        <span class="tag">Contact</span>
-        <h2 class="section-title">Let's work<br>together</h2>
-        <div class="divider"></div>
-        <p style="color:var(--text-sub); font-size:0.9rem; font-weight:300; line-height:1.85; margin-bottom:2.5rem;">
-          I'm available for freelance projects, consulting, and longer-term engagements.
-          Tell me what you're working on and let's see if it's a good fit.
-        </p>
-
-        <div class="contact-info-item">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          </div>
-          <div>
-            <div class="label">Email</div>
-            <div class="value">hello@alexmercer.dev</div>
-          </div>
-        </div>
-
-        <div class="contact-info-item">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div>
-            <div class="label">Location</div>
-            <div class="value">Lagos, Nigeria (Remote-friendly)</div>
-          </div>
-        </div>
-
-        <div class="contact-info-item">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div>
-            <div class="label">Response Time</div>
-            <div class="value">Within 24 hours</div>
-          </div>
-        </div>
+    <!-- Newsletter -->
+    <div class="newsletter-strip reveal">
+      <div>
+        <h3>Get new posts by email</h3>
+        <p>No spam. No cadence. Just a note when something new goes up.</p>
       </div>
-
-      <div class="reveal" data-delay="150">
-        <form class="contact-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="Your name" required />
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" required />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="service">What do you need?</label>
-            <select id="service" name="service">
-              <option value="">Select a service</option>
-              <option>Product Design</option>
-              <option>Frontend Development</option>
-              <option>Full-Stack Engineering</option>
-              <option>Design System</option>
-              <option>Something else</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Tell me about your project…" required></textarea>
-          </div>
-          <button type="submit" class="form-submit">
-            Send Message
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          </button>
-        </form>
-      </div>
-
+      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+        <input type="email" placeholder="you@example.com" required />
+        <button type="submit">Subscribe</button>
+      </form>
     </div>
+
   </div>
 </section>
 
@@ -499,15 +563,66 @@
       <div class="footer-logo">Alex<span>.</span></div>
       <p class="footer-copy">&copy; 2025 Alex Mercer. All rights reserved.</p>
       <ul class="footer-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#blog">Writing</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="index.html">Writing</a></li>
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
       </ul>
     </div>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="../script.js"></script>
+<script>
+  // ── Category filter ───────────────────────────
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const featuredPost = document.querySelector('.featured-post');
+  const postItems = document.querySelectorAll('.post-list-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+
+      // Featured post
+      if (filter === 'all' || featuredPost.dataset.category === filter) {
+        featuredPost.style.display = '';
+      } else {
+        featuredPost.style.display = 'none';
+      }
+
+      // List items
+      postItems.forEach(item => {
+        if (filter === 'all' || item.dataset.category === filter) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      // Update count
+      const visible = [...postItems].filter(i => i.style.display !== 'none').length
+        + (featuredPost.style.display !== 'none' ? 1 : 0);
+      document.querySelector('.post-count').innerHTML =
+        `<span>${visible}</span> post${visible !== 1 ? 's' : ''} ${filter === 'all' ? 'published' : 'in ' + btn.textContent}`;
+    });
+  });
+
+  // ── Newsletter ────────────────────────────────
+  function handleNewsletter(e) {
+    e.preventDefault();
+    const input = e.target.querySelector('input');
+    const btn = e.target.querySelector('button');
+    btn.textContent = 'Subscribed ✦';
+    btn.style.background = 'var(--surface)';
+    btn.style.color = 'var(--accent)';
+    btn.style.border = '1px solid var(--border-accent)';
+    input.value = '';
+    input.disabled = true;
+    btn.disabled = true;
+  }
+</script>
 </body>
 </html>
