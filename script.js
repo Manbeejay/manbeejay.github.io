@@ -39,23 +39,41 @@ revealEls.forEach(el => revealObserver.observe(el));
 // ── Contact Form ─────────────────────────────────
 const form = document.querySelector('.contact-form');
 
-form?.addEventListener('submit', (e) => {
+form?.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const btn = form.querySelector('.form-submit');
   btn.disabled = true;
   btn.textContent = 'Sending…';
 
-  // Simulate a send (replace with your form service endpoint)
-  setTimeout(() => {
+  const data = new FormData(form);
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: data
+    });
+
+    const json = await res.json();
+
+    if (json.success) {
+      btn.innerHTML = `✦ Sent`;
+      form.reset();
+      showToast('Message sent. I\'ll be in touch soon.');
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = `Send Message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`;
+      }, 3000);
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+      showToast('Something went wrong. Please try again.');
+    }
+  } catch (err) {
     btn.disabled = false;
-    btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Sent`;
-    form.reset();
-    showToast('Message sent. I\'ll be in touch soon.');
-    setTimeout(() => {
-      btn.innerHTML = `Send Message <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`;
-    }, 3000);
-  }, 1200);
+    btn.textContent = 'Send Message';
+    showToast('Could not send. Check your connection and try again.');
+  }
 });
 
 // ── Toast ─────────────────────────────────────────
