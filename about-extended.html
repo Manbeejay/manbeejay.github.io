@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engr. BJ Chiawa — Full Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0e0e0e;
+      --surface:   #161616;
+      --border:    #2a2a2a;
+      --gold:      #c9a84c;
+      --gold-dim:  #8a6e2f;
+      --text:      #d4cfc8;
+      --muted:     #6e6b65;
+      --white:     #f0ece5;
+      --serif:     'Playfair Display', Georgia, serif;
+      --mono:      'DM Mono', 'Courier New', monospace;
+      --body-font: 'Lora', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(14,14,14,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 10rem 3rem 5rem;
+      max-width: 860px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-tagline {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+    }
+
+    .hero-tagline span {
+      color: var(--text);
+    }
+
+    .hero-tagline span + span::before {
+      content: " · ";
+      color: var(--gold-dim);
+    }
+
+    /* ─── SECTIONS ─── */
+    .section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .section h2 {
+      font-family: var(--serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .section p {
+      color: var(--text);
+      margin-bottom: 1rem;
+      max-width: 680px;
+    }
+
+    /* ─── ROLES ─── */
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      margin-top: 2rem;
+      border: 1px solid var(--border);
+    }
+
+    .role-card {
+      background: var(--surface);
+      padding: 2.4rem 2rem;
+      position: relative;
+    }
+
+    .role-number {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--gold-dim);
+      margin-bottom: 1.2rem;
+    }
+
+    .role-card h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .role-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .role-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--gold);
+      transition: height 0.4s ease;
+    }
+
+    .role-card:hover::before { height: 100%; }
+
+    /* ─── EXPERIENCE TIMELINE ─── */
+    .timeline {
+      margin-top: 2rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-item:last-child { border-bottom: none; }
+
+    .timeline-date {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.08em;
+      padding-top: 0.2rem;
+    }
+
+    .timeline-body h4 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-body .org {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.7rem;
+    }
+
+    .timeline-body p {
+      font-size: 0.9rem;
+      color: var(--text);
+      max-width: 560px;
+    }
+
+    /* ─── SKILLS TAGS ─── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.35rem 0.8rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .tag:hover {
+      border-color: var(--gold-dim);
+      color: var(--gold);
+    }
+
+    /* ─── BOOK COVER PLACEHOLDER ─── */
+    .book-cover {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      max-height: 240px;
+      background: #1c1c1c;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 0.4rem;
+    }
+
+    .book-cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 18px,
+          rgba(201,168,76,0.04) 18px,
+          rgba(201,168,76,0.04) 19px
+        );
+    }
+
+    .book-cover-icon {
+      font-size: 2rem;
+      opacity: 0.18;
+      line-height: 1;
+    }
+
+    .book-cover-label {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.6;
+    }
+
+    .book-cover-upload {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      border: 1px dashed var(--gold-dim);
+      padding: 0.3rem 0.75rem;
+      opacity: 0.55;
+      transition: opacity 0.2s;
+    }
+
+    .book-card:hover .book-cover-upload { opacity: 1; }
+
+    .book-card.wip .book-cover {
+      background: #141414;
+    }
+
+    .book-card.wip .book-cover::before {
+      background:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 18px,
+          rgba(110,107,101,0.06) 18px,
+          rgba(110,107,101,0.06) 19px
+        );
+    }
+
+    /* Replace cover img when actual image is provided */
+    .book-cover img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ─── BOOKS ─── */
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+      background: var(--border);
+      margin-top: 2rem;
+    }
+
+    .book-card {
+      background: var(--surface);
+      padding: 2.8rem 2.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .book-card:hover::after { transform: scaleX(1); }
+
+    .book-status {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+
+    .book-card.wip .book-status { color: var(--muted); }
+
+    .book-card h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    .book-card h3 em {
+      font-style: italic;
+      display: block;
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin-top: 0.2rem;
+    }
+
+    .book-meta {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    .book-card p {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .book-link {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold-dim);
+      padding-bottom: 2px;
+      margin-top: auto;
+      width: fit-content;
+      transition: border-color 0.2s;
+    }
+
+    .book-link:hover { border-color: var(--gold); }
+
+    .book-themes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .book-theme {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.2rem 0.55rem;
+    }
+
+    /* ─── CREDENTIALS ─── */
+    .creds {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .cred-item {
+      border-left: 2px solid var(--border);
+      padding: 0 1.2rem;
+      transition: border-color 0.2s;
+    }
+
+    .cred-item:hover { border-color: var(--gold-dim); }
+
+    .cred-year {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+    }
+
+    .cred-title {
+      font-size: 0.9rem;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+
+    .cred-inst {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center;
+      padding: 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    footer p {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+    }
+
+    footer a {
+      color: var(--gold-dim);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--gold); }
+
+    /* ─── BACK BUTTON ─── */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      margin-top: 2rem;
+      transition: color 0.2s;
+    }
+
+    .back-btn:hover { color: var(--gold); }
+
+    .back-btn::before { content: '←'; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.4rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero, .section { padding-left: 1.4rem; padding-right: 1.4rem; }
+      .hero { padding-top: 7rem; }
+      .timeline-item { grid-template-columns: 1fr; gap: 0.4rem; }
+      .timeline-date { padding-top: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="https://manbeejay.github.io" class="nav-logo">BJ Chiawa</a>
+    <ul class="nav-links">
+      <li><a href="https://manbeejay.github.io">Home</a></li>
+      <li><a href="#roles">Roles</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <p class="hero-label">Full Profile &amp; CV</p>
+    <h1>Engr. <em>BJ Chiawa</em></h1>
+    <p class="hero-tagline">
+      <span>MNIAE</span>
+      <span>MNSE</span>
+      <span>RE-COREN</span>
+      <span>Enugu, Nigeria</span>
+    </p>
+    <p style="max-width:600px; color: var(--text);">
+      Over 30 years across industrial engineering, academic instruction, software development, and published writing. This page expands on the summary on the home page.
+    </p>
+    <a href="https://manbeejay.github.io" class="back-btn">Back to home</a>
+  </header>
+
+  <!-- ROLES -->
+  <section class="section" id="roles">
+    <p class="section-label">Professional Identity</p>
+    <h2>Three Roles, One Practice</h2>
+    <p>
+      Engineering, software development, and writing are not separate careers. They draw on the same discipline: taking a complex system apart, understanding it fully, and communicating it with precision.
+    </p>
+
+    <div class="roles-grid">
+      <div class="role-card">
+        <p class="role-number">01</p>
+        <h3>Engineering Professional &amp; Lecturer</h3>
+        <p>
+          Principal Technologist at ESUT's Agricultural and Bioresource Engineering Department. Over 30 years of industrial experience spanning chemical, mechanical, environmental, oil and gas, and agricultural engineering.
+        </p>
+      </div>
+      <div class="role-card">
+        <p class="role-number">02</p>
+        <h3>Full-Stack Developer</h3>
+        <p>
+          Builder of web applications, learning platforms, and interactive tools. Comfortable from database design to front-end production. Projects are live and linked on the home page.
+        </p>
+      </div>
+      <div class="role-card">
+        <p class="role-number">03</p>
+        <h3>Author</h3>
+        <p>
+          Published on KOBO and through independent channels. Work spans contemplative poetry prose, allegorical fiction, and long-form narrative. A third book is in progress.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <p class="section-label">Career</p>
+    <h2>Selected Experience</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-date">2019 – present</div>
+        <div class="timeline-body">
+          <h4>Principal Technologist</h4>
+          <p class="org">Enugu State University of Science and Technology (ESUT)</p>
+          <p>Manages the Agricultural and Bioresource Engineering laboratories and workshop. Trains students on AutoCAD, AutoDesk Inventor, and MS Visio. Leads industrial field tours to agro-processing facilities across Enugu State. Develops consultancy proposals for university-based engineering services.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2014 – 2018</div>
+        <div class="timeline-body">
+          <h4>Secretary, Board of Directors</h4>
+          <p class="org">Nike Lake Resort, Enugu (Enugu State Government appointment)</p>
+          <p>Supported governance and strategy at one of Enugu's major hospitality facilities. Kept board records, coordinated with the General Manager, and reported to the state government as principal shareholder.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2010 – present</div>
+        <div class="timeline-body">
+          <h4>Consultant Engineer</h4>
+          <p class="org">Mekkan Technologies Limited, Enugu</p>
+          <p>Business development, client interfacing, and operational strategy for an engineering consultancy serving multiple sectors in South-East Nigeria.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2007 – 2010</div>
+        <div class="timeline-body">
+          <h4>Senior Project Engineer / Developer</h4>
+          <p class="org">Nexus Alliance Limited, Port Harcourt / Warri / Lagos / Houston, TX</p>
+          <p>Produced Operations, Maintenance and Training (OMT) manuals for all Chevron Nigeria oil and gas production facilities. Read and interpreted P&amp;ID and isometric drawings using AutoCAD. Managed CMMS projects for SPDC Shell Cawthorne Channel facilities.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">1999 – 2003</div>
+        <div class="timeline-body">
+          <h4>Stock Controller, Materials Warehouse</h4>
+          <p class="org">National Fertilizer Company of Nigeria (NAFCON), Onne, Port Harcourt</p>
+          <p>Managed spare parts and inventory for a large-scale industrial fertilizer facility using the M W Kellogg of Houston Computerized Materials Management System.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">1989 – 1996</div>
+        <div class="timeline-body">
+          <h4>Senior Lecturer / Head of Agricultural Engineering</h4>
+          <p class="org">State College of Agriculture (now College of Education), Ikwo, Ebonyi State</p>
+          <p>Taught HND and OND students across Soil and Water Management, Irrigation and Drainage, Farm Mechanization, and Land Surveying. Managed a workshop staff of 27 across six technical units.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BOOKS -->
+  <section class="section" id="books">
+    <p class="section-label">Books &amp; Publications</p>
+    <h2>Writing</h2>
+    <p>
+      Fiction and non-fiction writing has been part of this practice since 2024. The same qualities that go into a good engineering report — clarity, structure, and the patience to finish a long project — carry directly into long-form writing.
+    </p>
+
+    <div class="books-grid">
+
+      <!-- Book 1 -->
+      <div class="book-card">
+        <div class="book-cover" title="Replace src with your cover image path">
+          <!-- To add the real cover: <img src="images/lon-lee-cover.jpg" alt="Lon Lee cover"> -->
+          <span class="book-cover-icon">📖</span>
+          <span class="book-cover-label">Cover Art</span>
+          <span class="book-cover-upload">Add cover image</span>
+        </div>
+        <p class="book-status">Published · 2024</p>
+        <h3>
+          LON LEE 乐鸥讷勒遏
+          <em>Notes from the Empty Room</em>
+        </h3>
+        <p class="book-meta">Genre: Contemplative Prose / Poetic Fiction</p>
+        <p>
+          A meditation on solitude and modern loneliness, written in spare, reflective prose. The fictional persona of Lon Lee stands for the emotional weight of being isolated in a connected world. Available on KOBO.
+        </p>
+        <div class="book-themes">
+          <span class="book-theme">Solitude</span>
+          <span class="book-theme">Spiritual longing</span>
+          <span class="book-theme">Modern identity</span>
+        </div>
+        <a href="https://www.kobo.com/ww/en/ebook/lon-lee?sId=d86890ea-fd6f-4248-9bbc-aa08f84ced2c&ssId=kdpbS5mttOMUM7k-T_FOA&cPos=1"
+           class="book-link" target="_blank" rel="noopener">Read on KOBO →</a>
+      </div>
+
+      <!-- Book 2 -->
+      <div class="book-card">
+        <div class="book-cover" title="Replace src with your cover image path">
+          <!-- To add the real cover: <img src="images/last-enemy-cover.jpg" alt="The Last Enemy cover"> -->
+          <span class="book-cover-icon">📖</span>
+          <span class="book-cover-label">Cover Art</span>
+          <span class="book-cover-upload">Add cover image</span>
+        </div>
+        <p class="book-status">Published · 2025</p>
+        <h3>
+          The Last Enemy
+          <em>When Hatred Comes Home</em>
+        </h3>
+        <p class="book-meta">Genre: Allegorical Fiction</p>
+        <p>
+          An allegorical narrative that draws on a career shaped by industry, data, and human experience. The story works on two levels: as a personal drama and as a broader commentary on authoritarianism, fear, and division.
+        </p>
+        <div class="book-themes">
+          <span class="book-theme">Authoritarianism</span>
+          <span class="book-theme">Fear</span>
+          <span class="book-theme">Social division</span>
+          <span class="book-theme">Resistance</span>
+        </div>
+        <a href="#" class="book-link">Find this book →</a>
+      </div>
+
+      <!-- Book 3 WIP -->
+      <div class="book-card wip">
+        <div class="book-cover" title="Cover art to be added when ready">
+          <!-- To add a cover later: <img src="images/hills-cover.jpg" alt="When the Hills Remembered cover"> -->
+          <span class="book-cover-icon">✍️</span>
+          <span class="book-cover-label">Coming Soon</span>
+        </div>
+        <p class="book-status">Work in Progress</p>
+        <h3>
+          When the Hills Remembered
+          <em>A story of Memory, Legacy, and the Spirit of Enugu</em>
+        </h3>
+        <p class="book-meta">Genre: Literary Fiction</p>
+        <p>
+          A long-form narrative rooted in the geography and memory of Enugu. Set against the hills that define the city, the story asks what a place holds long after the people who shaped it have moved on.
+        </p>
+        <div class="book-themes">
+          <span class="book-theme">Memory</span>
+          <span class="book-theme">Legacy</span>
+          <span class="book-theme">Place</span>
+          <span class="book-theme">Enugu</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section class="section" id="credentials">
+    <p class="section-label">Education &amp; Credentials</p>
+    <h2>Academic Background</h2>
+
+    <div class="creds">
+      <div class="cred-item">
+        <p class="cred-year">2016</p>
+        <p class="cred-title">M.Eng., Agricultural and Bioresource Engineering</p>
+        <p class="cred-inst">Enugu State University of Science and Technology (ESUT)</p>
+      </div>
+      <div class="cred-item">
+        <p class="cred-year">1984</p>
+        <p class="cred-title">B.Eng., Agricultural Engineering</p>
+        <p class="cred-inst">University of Nigeria, Nsukka (UNN)</p>
+      </div>
+      <div class="cred-item">
+        <p class="cred-year">In view</p>
+        <p class="cred-title">Ph.D, Agricultural and Bioresource Engineering</p>
+        <p class="cred-inst">Research ongoing</p>
+      </div>
+      <div class="cred-item">
+        <p class="cred-year">2007</p>
+        <p class="cred-title">Certified Project Developer</p>
+        <p class="cred-inst">RWD Technologies University, Houston, TX</p>
+      </div>
+      <div class="cred-item">
+        <p class="cred-year">2003</p>
+        <p class="cred-title">ECDL, Web Programming and Development</p>
+        <p class="cred-inst">The Technology Centre, Tottenham, London</p>
+      </div>
+      <div class="cred-item">
+        <p class="cred-year">1979</p>
+        <p class="cred-title">West African School Certificate (WASC)</p>
+        <p class="cred-inst">College of the Immaculate Conception (CIC), Enugu</p>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-top: 3rem;">Professional Memberships</p>
+
+    <div class="tags">
+      <span class="tag">MNIAE — Nigerian Institution of Agricultural Engineers</span>
+      <span class="tag">MNSE — Nigerian Society of Engineers</span>
+      <span class="tag">RE-COREN — Council for the Regulation of Engineering in Nigeria</span>
+      <span class="tag">ASABE — American Society of Agricultural and Biological Engineers</span>
+    </div>
+
+    <p class="section-label" style="margin-top: 3rem;">Technical Skills</p>
+
+    <div class="tags">
+      <span class="tag">AutoCAD</span>
+      <span class="tag">AutoDesk Inventor</span>
+      <span class="tag">MS Visio</span>
+      <span class="tag">SAP R/3</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">PHP</span>
+      <span class="tag">HTML / CSS</span>
+      <span class="tag">SQL</span>
+      <span class="tag">CMMS</span>
+      <span class="tag">GIS / GPS</span>
+      <span class="tag">Drone Technology</span>
+      <span class="tag">Solar Power Systems</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      Engr. BJ Chiawa · MNIAE, MNSE, RE-COREN · Enugu, Nigeria ·
+      <a href="mailto:ManBeejay@GMail.com">ManBeejay@gmail.com</a> ·
+      <a href="https://manbeejay.github.io">manbeejay.github.io</a>
+    </p>
+  </footer>
+
+</body>
+</html>
