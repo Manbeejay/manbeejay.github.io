@@ -87,7 +87,7 @@
       position: absolute;
       inset: 0;
       background: #111;
-      /* Replace with: background-image: url('photos/uk-hero.jpg'); */
+      /* Replace with: background-image: url('photos/israel-hero.jpg'); */
       background-size: cover;
       background-position: center;
     }
@@ -510,7 +510,7 @@
 
   <!-- HERO -->
   <header class="hero">
-    <div class="hero-image placeholder">
+    <div class="hero-image" style="background-image: url('photos/israel-hero.jpg')">
       <!-- To add your hero photo:
            1. Remove the "placeholder" class from .hero-image
            2. Add inline style: style="background-image: url('photos/uk-hero.jpg')"
@@ -572,9 +572,24 @@
           <span class="city-label">Bethlehem</span>
         </button>
 
-        <button class="city-btn" data-city="Golan" onclick="openCity(this)">
+        <button class="city-btn" data-city="golan" onclick="openCity(this)">
           <span class="city-icon">🏘</span>
           <span class="city-label">Golan</span>
+        </button>
+
+        <button class="city-btn" data-city="haifa" onclick="openCity(this)">
+          <span class="city-icon">🏘</span>
+          <span class="city-label">Haifa</span>
+        </button>
+
+        <button class="city-btn" data-city="jerusalem" onclick="openCity(this)">
+          <span class="city-icon">🏙</span>
+          <span class="city-label">Jerusalem</span>
+        </button>
+
+        <button class="city-btn" data-city="tel-aviv" onclick="openCity(this)">
+          <span class="city-icon">🏘</span>
+          <span class="city-label">Tel Aviv</span>
         </button>
 
         <!-- Add more cities as needed:
@@ -603,41 +618,41 @@
 
         <div class="photo-grid">
           <div class="photo-item">
-            <!-- Replace with: <img src="photos/london-01.jpg" class="photo-img" alt="London"> -->
+            <!-- Replace with: <img src="photos/israel-01.jpg" class="photo-img" alt="London"> -->
             <div class="photo-placeholder">
               <span class="photo-placeholder-icon">📷</span>
               <span class="photo-placeholder-text">Add photo</span>
             </div>
-            <p class="photo-caption">London · Add caption here</p>
+            <p class="photo-caption">Bethlehem · Add caption here</p>
           </div>
           <div class="photo-item">
             <div class="photo-placeholder">
               <span class="photo-placeholder-icon">📷</span>
               <span class="photo-placeholder-text">Add photo</span>
             </div>
-            <p class="photo-caption">London · Add caption here</p>
+            <p class="photo-caption">Bethlehem · Add caption here</p>
           </div>
           <div class="photo-item">
             <div class="photo-placeholder">
               <span class="photo-placeholder-icon">📷</span>
               <span class="photo-placeholder-text">Add photo</span>
             </div>
-            <p class="photo-caption">London · Add caption here</p>
+            <p class="photo-caption">Bethlehem · Add caption here</p>
           </div>
           <div class="photo-item">
             <div class="photo-placeholder">
               <span class="photo-placeholder-icon">📷</span>
               <span class="photo-placeholder-text">Add photo</span>
             </div>
-            <p class="photo-caption">London · Add caption here</p>
+            <p class="photo-caption">Bethlehem · Add caption here</p>
           </div>
         </div>
       </div>
 
-      <!-- TOTTENHAM PANEL -->
+      <!-- GOLAN PANEL -->
       <div class="city-panel" id="panel-tottenham">
         <div class="city-panel-header">
-          <h2>Tottenham, North London</h2>
+          <h2>Golan</h2>
           <p>
             Tottenham was the base of operations during the UK years. Work at The Technology Centre here produced the ECDL qualification and a practical grounding in web programming. North London at that time was a place of visible contrast: working-class energy, a strong West African community, and a pace of life that felt both familiar and foreign.
           </p>
@@ -655,21 +670,21 @@
               <span class="photo-placeholder-icon">📷</span>
               <span class="photo-placeholder-text">Add photo</span>
             </div>
-            <p class="photo-caption">Tottenham · Add caption here</p>
+            <p class="photo-caption">Golan · Add caption here</p>
           </div>
           <div class="photo-item">
             <div class="photo-placeholder">
               <span class="photo-placeholder-icon">📷</span>
               <span class="photo-placeholder-text">Add photo</span>
             </div>
-            <p class="photo-caption">Tottenham · Add caption here</p>
+            <p class="photo-caption">Golan · Add caption here</p>
           </div>
           <div class="photo-item">
             <div class="photo-placeholder">
               <span class="photo-placeholder-icon">📷</span>
               <span class="photo-placeholder-text">Add photo</span>
             </div>
-            <p class="photo-caption">Tottenham · Add caption here</p>
+            <p class="photo-caption">Golan · Add caption here</p>
           </div>
         </div>
       </div>
