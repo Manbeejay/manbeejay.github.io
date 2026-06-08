@@ -552,6 +552,152 @@
 
     .back-btn::before { content: '←'; }
 
+    /* ─── TRAVEL / PHOTOS ─── */
+    .section--wide {
+      max-width: 1100px;
+    }
+
+    /* Scrollable row wrapper */
+    .countries-row {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      margin-top: 2.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 1rem;
+    }
+
+    .countries-row::-webkit-scrollbar { height: 3px; }
+    .countries-row::-webkit-scrollbar-track { background: transparent; }
+    .countries-row::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+    /* Each country card — portrait ratio, like Stamatiou gear cards */
+    .country-card {
+      flex: 0 0 200px;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      background: var(--surface);
+      transition: transform 0.25s ease;
+    }
+
+    .country-card:hover { transform: translateY(-3px); }
+
+    .country-card--add {
+      opacity: 0.35;
+      border: 1px dashed var(--border);
+      background: transparent;
+    }
+
+    .country-card--add:hover { opacity: 0.6; transform: none; }
+
+    /* Portrait image zone — 3:4 ratio like Stamatiou */
+    .country-img-wrap {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      position: relative;
+      background: #1a1a1a;
+    }
+
+    /* Placeholder interior */
+    .country-img-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .country-img-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        135deg,
+        transparent,
+        transparent 14px,
+        rgba(201,168,76,0.03) 14px,
+        rgba(201,168,76,0.03) 15px
+      );
+    }
+
+    .country-img-placeholder--add {
+      background: #141414;
+    }
+
+    .country-img-icon {
+      font-size: 2.6rem;
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .country-img-label {
+      font-family: var(--mono);
+      font-size: 0.56rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.45;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Real photo — drop inside .country-img-wrap */
+    .country-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .country-card:hover .country-photo { transform: scale(1.05); }
+
+    /* Label strip below the image, matching Stamatiou "Category / Name" style */
+    .country-card-info {
+      padding: 0.75rem 0.85rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .country-category {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+
+    .country-name {
+      font-family: var(--serif);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.25;
+    }
+
+    .country-cities {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-top: 0.15rem;
+      line-height: 1.5;
+    }
+    
     /* ─── RESPONSIVE ─── */
     @media (max-width: 640px) {
       nav { padding: 1rem 1.4rem; }
@@ -560,6 +706,7 @@
       .hero { padding-top: 7rem; }
       .timeline-item { grid-template-columns: 1fr; gap: 0.4rem; }
       .timeline-date { padding-top: 0; }
+      .country-card { flex: 0 0 150px; }
     }
   </style>
 </head>
@@ -573,6 +720,7 @@
       <li><a href="https://manbeejay.github.io">Home</a></li>
       <li><a href="#roles">Roles</a></li>
       <li><a href="#books">Books</a></li>
+      <li><a href="#travel">Travel</a></li>
       <li><a href="#credentials">Credentials</a></li>
     </ul>
   </nav>
@@ -780,6 +928,80 @@
     </div>
   </section>
 
+  <!-- TRAVEL / PHOTOS -->
+  <section class="section section--wide" id="travel">
+    <p class="section-label">Photos</p>
+    <h2>Travel</h2>
+    <p>A record of countries visited, cities explored, and experiences gathered across decades of professional and personal travel.</p>
+
+    <div class="countries-row">
+
+      <!-- UNITED KINGDOM -->
+      <a href="travel-uk.html" class="country-card">
+        <div class="country-img-wrap">
+          <!-- Add photo: <img src="photos/uk-cover.jpg" class="country-photo" alt="United Kingdom"> -->
+          <div class="country-img-placeholder">
+            <span class="country-img-icon">🇬🇧</span>
+            <span class="country-img-label">Add photo</span>
+          </div>
+        </div>
+        <div class="country-card-info">
+          <span class="country-category">Travel / Europe</span>
+          <span class="country-name">United Kingdom</span>
+          <span class="country-cities">London · Tottenham</span>
+        </div>
+      </a>
+
+      <!-- UNITED STATES -->
+      <a href="travel-usa.html" class="country-card">
+        <div class="country-img-wrap">
+          <!-- Add photo: <img src="photos/usa-cover.jpg" class="country-photo" alt="United States"> -->
+          <div class="country-img-placeholder">
+            <span class="country-img-icon">🇺🇸</span>
+            <span class="country-img-label">Add photo</span>
+          </div>
+        </div>
+        <div class="country-card-info">
+          <span class="country-category">Travel / North America</span>
+          <span class="country-name">United States</span>
+          <span class="country-cities">Houston, TX</span>
+        </div>
+      </a>
+
+      <!-- NIGERIA -->
+      <a href="travel-nigeria.html" class="country-card">
+        <div class="country-img-wrap">
+          <!-- Add photo: <img src="photos/nigeria-cover.jpg" class="country-photo" alt="Nigeria"> -->
+          <div class="country-img-placeholder">
+            <span class="country-img-icon">🇳🇬</span>
+            <span class="country-img-label">Add photo</span>
+          </div>
+        </div>
+        <div class="country-card-info">
+          <span class="country-category">Travel / West Africa</span>
+          <span class="country-name">Nigeria</span>
+          <span class="country-cities">Enugu · Port Harcourt · Lagos · Warri</span>
+        </div>
+      </a>
+
+      <!-- ADD COUNTRY placeholder -->
+      <a href="#" class="country-card country-card--add">
+        <div class="country-img-wrap">
+          <div class="country-img-placeholder country-img-placeholder--add">
+            <span class="country-img-icon" style="opacity:0.25; font-size:2rem;">＋</span>
+            <span class="country-img-label">New country</span>
+          </div>
+        </div>
+        <div class="country-card-info">
+          <span class="country-category">Travel</span>
+          <span class="country-name">Add Country</span>
+          <span class="country-cities">Your next destination</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+  
   <!-- CREDENTIALS -->
   <section class="section" id="credentials">
     <p class="section-label">Education &amp; Credentials</p>
