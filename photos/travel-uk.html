@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>United Kingdom — BJ Chiawa Travel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0e0e0e;
+      --surface:   #161616;
+      --border:    #2a2a2a;
+      --gold:      #c9a84c;
+      --gold-dim:  #8a6e2f;
+      --text:      #d4cfc8;
+      --muted:     #6e6b65;
+      --white:     #f0ece5;
+      --serif:     'Playfair Display', Georgia, serif;
+      --mono:      'DM Mono', 'Courier New', monospace;
+      --body-font: 'Lora', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(14,14,14,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--gold); }
+    .nav-back::before { content: '← '; }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding-top: 5rem;
+      position: relative;
+      height: 90vh;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      background: #111;
+      /* Replace with: background-image: url('photos/uk-hero.jpg'); */
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Placeholder pattern for when no image is set */
+    .hero-image.placeholder {
+      background:
+        radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.06) 0%, transparent 60%),
+        repeating-linear-gradient(
+          135deg,
+          transparent,
+          transparent 30px,
+          rgba(201,168,76,0.025) 30px,
+          rgba(201,168,76,0.025) 31px
+        ),
+        #111;
+    }
+
+    .hero-flag {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 8rem;
+      opacity: 0.12;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 30%,
+        rgba(14,14,14,0.5) 65%,
+        rgba(14,14,14,0.95) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 3rem 3.5rem;
+      max-width: 860px;
+    }
+
+    .hero-breadcrumb {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 1rem;
+    }
+
+    .hero-breadcrumb a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hero-breadcrumb a:hover { color: var(--gold); }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-flag-inline {
+      font-size: 0.7em;
+      vertical-align: middle;
+      margin-right: 0.3em;
+    }
+
+    .hero-subtitle {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+    }
+
+    /* Add hero image instruction */
+    .hero-photo-hint {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .hero-photo-hint p {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.5;
+      margin-top: 0.5rem;
+    }
+
+    .hero-photo-hint .hint-icon {
+      font-size: 2.5rem;
+      opacity: 0.15;
+    }
+
+    /* ─── BODY LAYOUT ─── */
+    .page-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+
+    /* ─── COUNTRY DESCRIPTION ─── */
+    .country-desc {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .country-desc p {
+      color: var(--text);
+      margin-bottom: 1rem;
+      max-width: 680px;
+    }
+
+    .country-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .stat-value {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ─── CITIES ROW ─── */
+    .cities-section {
+      padding: 3.5rem 0;
+    }
+
+    .cities-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .city-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1.2rem 1.4rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      text-decoration: none;
+      min-width: 110px;
+    }
+
+    .city-btn:hover,
+    .city-btn.active {
+      border-color: var(--gold-dim);
+      background: #1e1e1e;
+    }
+
+    .city-btn.active {
+      border-color: var(--gold);
+    }
+
+    .city-icon {
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .city-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .city-btn.active .city-label,
+    .city-btn:hover .city-label {
+      color: var(--gold);
+    }
+
+    /* ─── CITY PANEL ─── */
+    .city-panel {
+      display: none;
+      padding: 2.5rem 0 1rem;
+      border-top: 1px solid var(--border);
+      margin-top: 1.5rem;
+    }
+
+    .city-panel.open { display: block; }
+
+    .city-panel-header {
+      margin-bottom: 2rem;
+    }
+
+    .city-panel-header h2 {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .city-panel-header p {
+      color: var(--text);
+      max-width: 620px;
+      font-size: 0.95rem;
+    }
+
+    /* ─── PHOTO GRID ─── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 2px;
+      background: var(--border);
+      margin-top: 2rem;
+    }
+
+    .photo-item {
+      background: var(--surface);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #181818;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      position: relative;
+    }
+
+    .photo-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 12px,
+        rgba(201,168,76,0.03) 12px,
+        rgba(201,168,76,0.03) 13px
+      );
+    }
+
+    .photo-placeholder-icon {
+      font-size: 1.6rem;
+      opacity: 0.15;
+      position: relative;
+    }
+
+    .photo-placeholder-text {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.4;
+      position: relative;
+    }
+
+    /* Actual image (when supplied) */
+    .photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+      aspect-ratio: 4 / 3;
+    }
+
+    .photo-item:hover .photo-img { transform: scale(1.05); }
+
+    .photo-caption {
+      padding: 0.7rem 0.9rem;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      line-height: 1.5;
+    }
+
+    /* ─── ACTIVITIES ─── */
+    .activity-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .activity-tag {
+      font-family: var(--mono);
+      font-size: 0.63rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.3rem 0.7rem;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .activity-tag:hover,
+    .activity-tag.active {
+      border-color: var(--gold-dim);
+      color: var(--gold);
+    }
+
+    /* ─── BACK LINK ─── */
+    .back-section {
+      padding: 3rem 0 5rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    .back-link {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--gold); }
+    .back-link::before { content: '← '; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center;
+      padding: 2rem 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    footer p {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+    }
+
+    footer a { color: var(--gold-dim); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.4rem; }
+      .hero-content { padding: 0 1.4rem 2.5rem; }
+      .page-body { padding: 0 1.4rem; }
+      .cities-row { gap: 0.6rem; }
+      .city-btn { min-width: 90px; padding: 1rem; }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="https://manbeejay.github.io" class="nav-logo">BJ Chiawa</a>
+    <a href="about-extended.html#travel" class="nav-back">Travel</a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-image placeholder">
+      <!-- To add your hero photo:
+           1. Remove the "placeholder" class from .hero-image
+           2. Add inline style: style="background-image: url('photos/uk-hero.jpg')"
+           Or place an <img> tag here and adjust with CSS -->
+    </div>
+    <div class="hero-flag" aria-hidden="true">🇬🇧</div>
+    <div class="hero-photo-hint" aria-hidden="true">
+      <div class="hint-icon">🏔</div>
+      <p>Add hero photo</p>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-breadcrumb">
+        <a href="about-extended.html#travel">Travel</a>
+        &nbsp;/&nbsp; United Kingdom
+      </p>
+      <h1><span class="hero-flag-inline">🇬🇧</span>United Kingdom</h1>
+      <p class="hero-subtitle">Europe · 2003 – 2005</p>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="page-body">
+
+    <!-- COUNTRY DESCRIPTION -->
+    <section class="country-desc">
+      <p class="section-label">Overview</p>
+      <p>
+        The United Kingdom was home for two years during a period of professional training and European Computer Driving Licence certification. Time there was split between London and the borough of Tottenham in North London, where work in IT infrastructure and freelance web development occupied most of the schedule.
+      </p>
+      <p>
+        The country offered a different pace and a window into European engineering practice, data centre operations, and the early culture of co-location hosting at a time when internet infrastructure was still taking its current shape.
+      </p>
+
+      <div class="country-stats">
+        <div class="stat">
+          <span class="stat-value">2</span>
+          <span class="stat-label">Years</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">2</span>
+          <span class="stat-label">Cities</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">2003</span>
+          <span class="stat-label">First visit</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CITIES -->
+    <section class="cities-section">
+      <p class="section-label">Cities</p>
+
+      <div class="cities-row" id="citiesRow">
+
+        <button class="city-btn" data-city="london" onclick="openCity(this)">
+          <span class="city-icon">🏙</span>
+          <span class="city-label">London</span>
+        </button>
+
+        <button class="city-btn" data-city="tottenham" onclick="openCity(this)">
+          <span class="city-icon">🏘</span>
+          <span class="city-label">Tottenham</span>
+        </button>
+
+        <!-- Add more cities as needed:
+        <button class="city-btn" data-city="edinburgh" onclick="openCity(this)">
+          <span class="city-icon">🏰</span>
+          <span class="city-label">Edinburgh</span>
+        </button>
+        -->
+
+      </div>
+
+      <!-- LONDON PANEL -->
+      <div class="city-panel" id="panel-london">
+        <div class="city-panel-header">
+          <h2>London</h2>
+          <p>
+            London anchored the UK years. A city that moves constantly, it was a place of professional firsts: first European certification, first exposure to large-scale IT infrastructure, and first experience of a working culture built around precision and accountability. The city itself repaid every spare moment given to it.
+          </p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">IT Infrastructure</span>
+            <span class="activity-tag">ECDL Certification</span>
+            <span class="activity-tag">Freelance Web Dev</span>
+            <span class="activity-tag">City Exploration</span>
+          </div>
+        </div>
+
+        <div class="photo-grid">
+          <div class="photo-item">
+            <!-- Replace with: <img src="photos/london-01.jpg" class="photo-img" alt="London"> -->
+            <div class="photo-placeholder">
+              <span class="photo-placeholder-icon">📷</span>
+              <span class="photo-placeholder-text">Add photo</span>
+            </div>
+            <p class="photo-caption">London · Add caption here</p>
+          </div>
+          <div class="photo-item">
+            <div class="photo-placeholder">
+              <span class="photo-placeholder-icon">📷</span>
+              <span class="photo-placeholder-text">Add photo</span>
+            </div>
+            <p class="photo-caption">London · Add caption here</p>
+          </div>
+          <div class="photo-item">
+            <div class="photo-placeholder">
+              <span class="photo-placeholder-icon">📷</span>
+              <span class="photo-placeholder-text">Add photo</span>
+            </div>
+            <p class="photo-caption">London · Add caption here</p>
+          </div>
+          <div class="photo-item">
+            <div class="photo-placeholder">
+              <span class="photo-placeholder-icon">📷</span>
+              <span class="photo-placeholder-text">Add photo</span>
+            </div>
+            <p class="photo-caption">London · Add caption here</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOTTENHAM PANEL -->
+      <div class="city-panel" id="panel-tottenham">
+        <div class="city-panel-header">
+          <h2>Tottenham, North London</h2>
+          <p>
+            Tottenham was the base of operations during the UK years. Work at The Technology Centre here produced the ECDL qualification and a practical grounding in web programming. North London at that time was a place of visible contrast: working-class energy, a strong West African community, and a pace of life that felt both familiar and foreign.
+          </p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">The Technology Centre</span>
+            <span class="activity-tag">Web Programming</span>
+            <span class="activity-tag">Computer Networking</span>
+            <span class="activity-tag">Community</span>
+          </div>
+        </div>
+
+        <div class="photo-grid">
+          <div class="photo-item">
+            <div class="photo-placeholder">
+              <span class="photo-placeholder-icon">📷</span>
+              <span class="photo-placeholder-text">Add photo</span>
+            </div>
+            <p class="photo-caption">Tottenham · Add caption here</p>
+          </div>
+          <div class="photo-item">
+            <div class="photo-placeholder">
+              <span class="photo-placeholder-icon">📷</span>
+              <span class="photo-placeholder-text">Add photo</span>
+            </div>
+            <p class="photo-caption">Tottenham · Add caption here</p>
+          </div>
+          <div class="photo-item">
+            <div class="photo-placeholder">
+              <span class="photo-placeholder-icon">📷</span>
+              <span class="photo-placeholder-text">Add photo</span>
+            </div>
+            <p class="photo-caption">Tottenham · Add caption here</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- BACK -->
+    <div class="back-section">
+      <a href="about-extended.html#travel" class="back-link">Back to Travel</a>
+    </div>
+
+  </div><!-- /page-body -->
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      Engr. BJ Chiawa · <a href="about-extended.html">Full Profile</a> · <a href="https://manbeejay.github.io">Home</a>
+    </p>
+  </footer>
+
+  <script>
+    function openCity(btn) {
+      // Close all panels and deactivate all buttons
+      document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.city-panel').forEach(p => p.classList.remove('open'));
+
+      const cityId = btn.dataset.city;
+      const panel = document.getElementById('panel-' + cityId);
+
+      // If clicking the already-active city, just close (toggle off)
+      if (btn.classList.contains('active')) {
+        btn.classList.remove('active');
+        return;
+      }
+
+      btn.classList.add('active');
+      if (panel) {
+        panel.classList.add('open');
+        // Smooth scroll to panel
+        setTimeout(() => {
+          panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+      }
+    }
+  </script>
+
+</body>
+</html>
