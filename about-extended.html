@@ -475,7 +475,71 @@
       color: var(--muted);
       padding: 0.2rem 0.55rem;
     }
+    
+/* ─── ACADEMIC PUBLICATIONS ─── */
+    .publications-block {
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      max-width: 680px;
+    }
 
+    .pub-heading {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 1.5rem;
+    }
+
+    .pub-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+    }
+
+    .pub-list li {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pub-list li:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .pub-link {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 0.9rem 0;
+      text-decoration: none;
+      transition: padding-left 0.2s;
+    }
+
+    .pub-link:hover {
+      padding-left: 0.5rem;
+    }
+
+    .pub-title {
+      font-family: var(--body-font);
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.45;
+      transition: color 0.2s;
+    }
+
+    .pub-link:hover .pub-title {
+      color: var(--gold);
+    }
+
+    .pub-meta {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    
     /* ─── CREDENTIALS ─── */
     .creds {
       display: grid;
@@ -925,6 +989,43 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- ACADEMIC PUBLICATIONS -->
+    <div class="publications-block">
+      <p class="pub-heading">Academic Papers &amp; Articles</p>
+      <ul class="pub-list">
+        <li>
+          <a href="#" class="pub-link">
+            <span class="pub-title">Article title — replace with actual title</span>
+            <span class="pub-meta">Journal / Conference · Year</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="pub-link">
+            <span class="pub-title">Article title — replace with actual title</span>
+            <span class="pub-meta">Journal / Conference · Year</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="pub-link">
+            <span class="pub-title">Article title — replace with actual title</span>
+            <span class="pub-meta">Journal / Conference · Year</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="pub-link">
+            <span class="pub-title">Article title — replace with actual title</span>
+            <span class="pub-meta">Journal / Conference · Year</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="pub-link">
+            <span class="pub-title">Article title — replace with actual title</span>
+            <span class="pub-meta">Journal / Conference · Year</span>
+          </a>
+        </li>
+      </ul>
     </div>
   </section>
 
