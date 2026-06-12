@@ -12,828 +12,522 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #0e0e0e;
-      --surface:   #161616;
-      --border:    #2a2a2a;
-      --gold:      #c9a84c;
-      --gold-dim:  #8a6e2f;
-      --text:      #d4cfc8;
-      --muted:     #6e6b65;
-      --white:     #f0ece5;
-      --serif:     'Playfair Display', Georgia, serif;
-      --mono:      'DM Mono', 'Courier New', monospace;
+      --bg: #0e0e0e; --surface: #161616; --border: #2a2a2a;
+      --gold: #c9a84c; --gold-dim: #8a6e2f;
+      --text: #d4cfc8; --muted: #6e6b65; --white: #f0ece5;
+      --serif: 'Playfair Display', Georgia, serif;
+      --mono: 'DM Mono', 'Courier New', monospace;
       --body-font: 'Lora', Georgia, serif;
     }
 
     html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--body-font); font-size: 16px; line-height: 1.75; }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--body-font);
-      font-size: 16px;
-      line-height: 1.75;
-    }
-
-    /* ─── NAV ─── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.2rem 3rem;
-      background: rgba(14,14,14,0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      text-decoration: none;
-    }
-
-    .nav-back {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; background: rgba(14,14,14,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); text-decoration: none; }
+    .nav-back { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .nav-back:hover { color: var(--gold); }
     .nav-back::before { content: '← '; }
 
-    /* ─── HERO ─── */
-    .hero {
-      padding-top: 5rem;
-      position: relative;
-      height: 90vh;
-      min-height: 500px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      overflow: hidden;
-    }
-
-    .hero-image {
-      position: absolute;
-      inset: 0;
-      background: #111;
-      /* Replace with: background-image: url('photos/israel-hero.jpg'); */
-      background-size: cover;
-      background-position: center;
-    }
-
-    /* Placeholder pattern for when no image is set */
-    .hero-image.placeholder {
-      background:
-        radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.06) 0%, transparent 60%),
-        repeating-linear-gradient(
-          135deg,
-          transparent,
-          transparent 30px,
-          rgba(201,168,76,0.025) 30px,
-          rgba(201,168,76,0.025) 31px
-        ),
-        #111;
-    }
-
-    .hero-flag {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 8rem;
-      opacity: 0.12;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        transparent 30%,
-        rgba(14,14,14,0.5) 65%,
-        rgba(14,14,14,0.95) 100%
-      );
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 0 3rem 3.5rem;
-      max-width: 860px;
-    }
-
-    .hero-breadcrumb {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      margin-bottom: 1rem;
-    }
-
-    .hero-breadcrumb a {
-      color: inherit;
-      text-decoration: none;
-    }
-
+    /* HERO */
+    .hero { padding-top: 5rem; position: relative; height: 90vh; min-height: 500px; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
+    .hero-image { position: absolute; inset: 0; background-size: cover; background-position: center; }
+    .hero-image.placeholder { background: radial-gradient(ellipse at 55% 45%, rgba(201,168,76,0.08) 0%, transparent 55%), repeating-linear-gradient(135deg, transparent, transparent 30px, rgba(201,168,76,0.025) 30px, rgba(201,168,76,0.025) 31px), #0f0e0c; }
+    .hero-flag { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 8rem; opacity: 0.1; pointer-events: none; user-select: none; }
+    .hero-photo-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 3; text-align: center; pointer-events: none; }
+    .hero-photo-hint p { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); opacity: 0.45; margin-top: 0.5rem; }
+    .hero-photo-hint .hint-icon { font-size: 2.5rem; opacity: 0.13; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, rgba(14,14,14,0.55) 65%, rgba(14,14,14,0.97) 100%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 3rem 3.5rem; max-width: 860px; }
+    .hero-breadcrumb { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 1rem; }
+    .hero-breadcrumb a { color: inherit; text-decoration: none; }
     .hero-breadcrumb a:hover { color: var(--gold); }
+    .hero h1 { font-family: var(--serif); font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 400; color: var(--white); line-height: 1.1; margin-bottom: 0.5rem; }
+    .hero-flag-inline { font-size: 0.7em; vertical-align: middle; margin-right: 0.3em; }
+    .hero-subtitle { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.12em; }
 
-    .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(2.8rem, 7vw, 5rem);
-      font-weight: 400;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-flag-inline {
-      font-size: 0.7em;
-      vertical-align: middle;
-      margin-right: 0.3em;
-    }
-
-    .hero-subtitle {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-    }
-
-    /* Add hero image instruction */
-    .hero-photo-hint {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 3;
-      text-align: center;
-      pointer-events: none;
-    }
-
-    .hero-photo-hint p {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      opacity: 0.5;
-      margin-top: 0.5rem;
-    }
-
-    .hero-photo-hint .hint-icon {
-      font-size: 2.5rem;
-      opacity: 0.15;
-    }
-
-    /* ─── BODY LAYOUT ─── */
-    .page-body {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 3rem;
-    }
-
-    /* ─── COUNTRY DESCRIPTION ─── */
-    .country-desc {
-      padding: 4rem 0 3rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .country-desc p {
-      color: var(--text);
-      margin-bottom: 1rem;
-      max-width: 680px;
-    }
-
-    .country-stats {
-      display: flex;
-      gap: 3rem;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .stat {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    .stat-value {
-      font-family: var(--serif);
-      font-size: 1.6rem;
-      color: var(--gold);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* ─── CITIES ROW ─── */
-    .cities-section {
-      padding: 3.5rem 0;
-    }
-
-    .cities-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .city-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 1.2rem 1.4rem;
+    /* JOURNEY BANNER */
+    .journey-banner {
       background: var(--surface);
-      border: 1px solid var(--border);
-      cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
-      text-decoration: none;
-      min-width: 110px;
-    }
-
-    .city-btn:hover,
-    .city-btn.active {
-      border-color: var(--gold-dim);
-      background: #1e1e1e;
-    }
-
-    .city-btn.active {
-      border-color: var(--gold);
-    }
-
-    .city-icon {
-      font-size: 2rem;
-      line-height: 1;
-    }
-
-    .city-label {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    .city-btn.active .city-label,
-    .city-btn:hover .city-label {
-      color: var(--gold);
-    }
-
-    /* ─── CITY PANEL ─── */
-    .city-panel {
-      display: none;
-      padding: 2.5rem 0 1rem;
       border-top: 1px solid var(--border);
-      margin-top: 1.5rem;
-    }
-
-    .city-panel.open { display: block; }
-
-    .city-panel-header {
-      margin-bottom: 2rem;
-    }
-
-    .city-panel-header h2 {
-      font-family: var(--serif);
-      font-size: 1.8rem;
-      font-weight: 400;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-
-    .city-panel-header p {
-      color: var(--text);
-      max-width: 620px;
-      font-size: 0.95rem;
-    }
-
-    /* ─── PHOTO GRID ─── */
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 2px;
-      background: var(--border);
-      margin-top: 2rem;
-    }
-
-    .photo-item {
-      background: var(--surface);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .photo-placeholder {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      background: #181818;
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 3rem;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      position: relative;
-    }
-
-    .photo-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 12px,
-        rgba(201,168,76,0.03) 12px,
-        rgba(201,168,76,0.03) 13px
-      );
-    }
-
-    .photo-placeholder-icon {
-      font-size: 1.6rem;
-      opacity: 0.15;
-      position: relative;
-    }
-
-    .photo-placeholder-text {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      opacity: 0.4;
-      position: relative;
-    }
-
-    /* Actual image (when supplied) */
-    .photo-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-      aspect-ratio: 4 / 3;
-    }
-
-    .photo-item:hover .photo-img { transform: scale(1.05); }
-
-    .photo-caption {
-      padding: 0.7rem 0.9rem;
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      line-height: 1.5;
-    }
-
-    /* ─── ACTIVITIES ─── */
-    .activity-tag-row {
-      display: flex;
+      gap: 0.6rem;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
+      overflow-x: auto;
     }
-
-    .activity-tag {
+    .journey-stop {
       font-family: var(--mono);
-      font-size: 0.63rem;
+      font-size: 0.65rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      border: 1px solid var(--border);
       color: var(--muted);
-      padding: 0.3rem 0.7rem;
-      cursor: pointer;
-      transition: border-color 0.2s, color 0.2s;
+      white-space: nowrap;
     }
-
-    .activity-tag:hover,
-    .activity-tag.active {
-      border-color: var(--gold-dim);
-      color: var(--gold);
-    }
-
-    /* ─── BACK LINK ─── */
-    .back-section {
-      padding: 3rem 0 5rem;
-      border-top: 1px solid var(--border);
-      margin-top: 2rem;
-    }
-
-    .back-link {
+    .journey-stop.highlight { color: var(--gold); }
+    .journey-arrow {
       font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
+      font-size: 0.6rem;
+      color: var(--border);
     }
 
+    /* PAGE BODY */
+    .page-body { max-width: 860px; margin: 0 auto; padding: 0 3rem; }
+
+    /* COUNTRY DESCRIPTION */
+    .country-desc { padding: 4rem 0 3rem; border-bottom: 1px solid var(--border); }
+    .section-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .country-desc p { color: var(--text); margin-bottom: 1rem; max-width: 680px; }
+    .country-stats { display: flex; gap: 3rem; margin-top: 2rem; flex-wrap: wrap; }
+    .stat { display: flex; flex-direction: column; gap: 0.2rem; }
+    .stat-value { font-family: var(--serif); font-size: 1.6rem; color: var(--gold); line-height: 1; }
+    .stat-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+    /* REGIONS (city buttons) */
+    .cities-section { padding: 3.5rem 0; }
+    .cities-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 1.5rem; }
+    .city-btn { display: flex; flex-direction: column; align-items: center; gap: 0.45rem; padding: 1.2rem 1.4rem; background: var(--surface); border: 1px solid var(--border); cursor: pointer; transition: border-color 0.2s, background 0.2s; min-width: 110px; font-family: inherit; }
+    .city-btn:hover, .city-btn.active { border-color: var(--gold-dim); background: #1e1e1e; }
+    .city-btn.active { border-color: var(--gold); }
+    .city-icon { font-size: 2rem; line-height: 1; }
+    .city-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-align: center; line-height: 1.4; }
+    .city-btn.active .city-label, .city-btn:hover .city-label { color: var(--gold); }
+
+    /* REGION PANEL */
+    .city-panel { display: none; padding: 2.5rem 0 1rem; border-top: 1px solid var(--border); margin-top: 1.5rem; }
+    .city-panel.open { display: block; }
+    .city-panel-header { margin-bottom: 2rem; }
+    .city-panel-header h2 { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; color: var(--white); margin-bottom: 0.5rem; }
+    .city-panel-header > p { color: var(--text); max-width: 640px; font-size: 0.95rem; margin-bottom: 0.8rem; }
+
+    /* SITE ENTRIES within a region */
+    .site-entry {
+      margin-top: 2.8rem;
+      padding-top: 2.2rem;
+      border-top: 1px solid var(--border);
+    }
+    .site-entry:first-of-type { margin-top: 1rem; padding-top: 0; border-top: none; }
+    .site-entry h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .site-entry p {
+      color: var(--text);
+      font-size: 0.92rem;
+      max-width: 640px;
+      margin-bottom: 0.6rem;
+    }
+
+    /* PULL QUOTE */
+    .pull-quote { border-left: 2px solid var(--gold-dim); padding: 0.6rem 1.2rem; margin: 1.2rem 0 1.4rem; max-width: 560px; }
+    .pull-quote p { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--white); margin: 0; line-height: 1.6; }
+    .pull-quote cite { display: block; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dim); margin-top: 0.5rem; font-style: normal; }
+
+    /* ACTIVITY TAGS */
+    .activity-tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .activity-tag { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--border); color: var(--muted); padding: 0.28rem 0.65rem; }
+
+    /* PHOTO GRID */
+    .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 2px; background: var(--border); margin-top: 1.5rem; }
+    .photo-item { background: var(--surface); position: relative; overflow: hidden; }
+    .photo-placeholder { width: 100%; aspect-ratio: 4/3; background: #181818; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; position: relative; }
+    .photo-placeholder::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(201,168,76,0.03) 12px, rgba(201,168,76,0.03) 13px); }
+    .photo-placeholder-icon { font-size: 1.5rem; opacity: 0.14; position: relative; }
+    .photo-placeholder-text { font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); opacity: 0.38; position: relative; }
+    .photo-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; aspect-ratio: 4/3; }
+    .photo-item:hover .photo-img { transform: scale(1.05); }
+    .photo-caption { padding: 0.65rem 0.85rem; font-family: var(--mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.06em; line-height: 1.5; }
+
+    /* BACK + FOOTER */
+    .back-section { padding: 3rem 0 5rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+    .back-link { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .back-link:hover { color: var(--gold); }
     .back-link::before { content: '← '; }
-
-    /* ─── FOOTER ─── */
-    footer {
-      text-align: center;
-      padding: 2rem 3rem;
-      border-top: 1px solid var(--border);
-    }
-
-    footer p {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-    }
-
+    footer { text-align: center; padding: 2rem 3rem; border-top: 1px solid var(--border); }
+    footer p { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.12em; }
     footer a { color: var(--gold-dim); text-decoration: none; }
     footer a:hover { color: var(--gold); }
 
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 640px) {
       nav { padding: 1rem 1.4rem; }
       .hero-content { padding: 0 1.4rem 2.5rem; }
+      .journey-banner { padding: 1rem 1.4rem; }
       .page-body { padding: 0 1.4rem; }
-      .cities-row { gap: 0.6rem; }
       .city-btn { min-width: 90px; padding: 1rem; }
       .photo-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="https://manbeejay.github.io" class="nav-logo">BJ Chiawa</a>
     <a href="about-extended.html#travel" class="nav-back">Travel</a>
   </nav>
 
-  <!-- HERO -->
   <header class="hero">
-    <div class="hero-image" style="background-image: url('photos/israel-hero.jpg')">
-      <!-- To add your hero photo:
-           1. Remove the "placeholder" class from .hero-image
-           2. Add inline style: style="background-image: url('photos/uk-hero.jpg')"
-           Or place an <img> tag here and adjust with CSS -->
+    <div class="hero-image placeholder">
+      <!-- To add hero photo: remove "placeholder" class, add style="background-image: url('photos/israel-hero.jpg')" -->
     </div>
     <div class="hero-flag" aria-hidden="true">🇮🇱</div>
     <div class="hero-photo-hint" aria-hidden="true">
-      <div class="hint-icon">🏔</div>
+      <div class="hint-icon">✡</div>
       <p>Add hero photo</p>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-breadcrumb">
-        <a href="about-extended.html#travel">Travel</a>
-        &nbsp;/&nbsp; Israel
-      </p>
+      <p class="hero-breadcrumb"><a href="about-extended.html#travel">Travel</a> &nbsp;/&nbsp; Israel</p>
       <h1><span class="hero-flag-inline">🇮🇱</span>Israel</h1>
-      <p class="hero-subtitle">Europe · 2012</p>
+      <p class="hero-subtitle">Middle East · Pilgrimage · 2012</p>
     </div>
   </header>
 
-  <!-- BODY -->
+  <!-- JOURNEY ROUTE BANNER -->
+  <div class="journey-banner">
+    <span class="journey-stop">Port Harcourt</span>
+    <span class="journey-arrow">→</span>
+    <span class="journey-stop">Antalya, Turkey <span style="color:var(--border);">(3-hr stopover)</span></span>
+    <span class="journey-arrow">→</span>
+    <span class="journey-stop highlight">Ben Gurion Airport, Tel Aviv</span>
+    <span class="journey-arrow">→</span>
+    <span class="journey-stop">Jerusalem · Galilee · Sacred Sites</span>
+  </div>
+
   <div class="page-body">
 
-    <!-- COUNTRY DESCRIPTION -->
     <section class="country-desc">
       <p class="section-label">Overview</p>
       <p>
-        Lorem ipsum...
+        In 2012, a group of pilgrims from Enugu made the journey to the Holy Land. The flight went out of Port Harcourt, with a three-hour stopover at Antalya Airport in Turkey, before landing at Ben Gurion International Airport in Tel Aviv.
       </p>
       <p>
-Lorem ipsum...      </p>
-
+        Israel is layered in a way that no other place quite is. Every stone carries a reference, every hill a name, every road a story that has been told for two thousand years. Walking those sites as a person of faith is a different experience from reading about them. The ground makes the text real.
+      </p>
+      <p>
+        The sites visited span three regions: Jerusalem and the Old City, the Galilee in the north, and several additional sacred locations spread across the country.
+      </p>
       <div class="country-stats">
         <div class="stat">
-          <span class="stat-value">1</span>
-          <span class="stat-label">Years</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value">5</span>
-          <span class="stat-label">Cities</span>
-        </div>
-        <div class="stat">
           <span class="stat-value">2012</span>
-          <span class="stat-label">Year visited</span>
+          <span class="stat-label">Year</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">3</span>
+          <span class="stat-label">Regions</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">12+</span>
+          <span class="stat-label">Holy Sites</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">Pilgrimage</span>
+          <span class="stat-label">Purpose</span>
         </div>
       </div>
     </section>
 
-    <!-- CITIES -->
     <section class="cities-section">
-      <p class="section-label">Cities</p>
+      <p class="section-label">Regions</p>
 
-      <div class="cities-row" id="citiesRow">
-
-        <button class="city-btn" data-city="bethlehem" onclick="openCity(this)">
-          <span class="city-icon">🏙</span>
-          <span class="city-label">Bethlehem</span>
-        </button>
-
-        <button class="city-btn" data-city="golan" onclick="openCity(this)">
-          <span class="city-icon">🏘</span>
-          <span class="city-label">Golan</span>
-        </button>
-
-        <button class="city-btn" data-city="haifa" onclick="openCity(this)">
-          <span class="city-icon">🏘</span>
-          <span class="city-label">Haifa</span>
-        </button>
-
+      <div class="cities-row">
         <button class="city-btn" data-city="jerusalem" onclick="openCity(this)">
-          <span class="city-icon">🏙</span>
+          <span class="city-icon">🕌</span>
           <span class="city-label">Jerusalem</span>
         </button>
-
-        <button class="city-btn" data-city="tel-aviv" onclick="openCity(this)">
-          <span class="city-icon">🏘</span>
-          <span class="city-label">Tel Aviv</span>
+        <button class="city-btn" data-city="galilee" onclick="openCity(this)">
+          <span class="city-icon">🌊</span>
+          <span class="city-label">Galilee Region</span>
         </button>
-
-        <!-- Add more cities as needed:
-        <button class="city-btn" data-city="haifa" onclick="openCity(this)">
-          <span class="city-icon">🏰</span>
-          <span class="city-label">Haifa</span>
+        <button class="city-btn" data-city="other" onclick="openCity(this)">
+          <span class="city-icon">✝</span>
+          <span class="city-label">Additional Sites</span>
         </button>
-        -->
-
       </div>
 
-      <!-- BETHLEHEM PANEL -->
-      <div class="city-panel" id="panel-bethlehem">
-        <div class="city-panel-header">
-          <h2>Bethlehem</h2>
-          <p>
-Lorem ipsum...          </p>
-          <div class="activity-tag-row">
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
-          </div>
-        </div>
-
-        <div class="photo-grid">
-          <div class="photo-item">
-            <img src="photos/bethlehem-01.jpg" class="photo-img" alt="The Church of Nativity, Bethlehem">
-              <p class="photo-caption">Bethlehem · At the Church of Nativity</p>
-            </div>
-          <div class="photo-item">
-            <img src="photos/bethlehem-02.jpg" class="photo-img" alt="Bethlehem, Israel">
-              <p class="photo-caption">Bethlehem · Add caption here</p>
-            </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Bethlehem · Add caption here</p>
-          </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Bethlehem · Add caption here</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- GOLAN PANEL -->
-      <div class="city-panel" id="panel-golan">
-        <div class="city-panel-header">
-          <h2>Golan</h2>
-          <p>
-Lorem ipsum...          </p>
-          <div class="activity-tag-row">
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
-          </div>
-        </div>
-
-        <div class="photo-grid">
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Golan · Add caption here</p>
-          </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Golan · Add caption here</p>
-          </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Golan · Add caption here</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- HAIFA PANEL -->
-      <div class="city-panel" id="panel-haifa">
-        <div class="city-panel-header">
-          <h2>Haifa</h2>
-          <p>
-Lorem ipsum...          </p>
-          <div class="activity-tag-row">
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
-          </div>
-        </div>
-
-        <div class="photo-grid">
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Haifa · Add caption here</p>
-          </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Haifa · Add caption here</p>
-          </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Haifa · Add caption here</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- JERUSALEM PANEL -->
+      <!-- JERUSALEM -->
       <div class="city-panel" id="panel-jerusalem">
         <div class="city-panel-header">
           <h2>Jerusalem</h2>
-          <p>
-Lorem ipsum...          </p>
+          <p>Jerusalem holds the core of Christian pilgrimage. The Old City packs more history into its ancient walls than most countries carry in their entirety. To walk it as a believer is to move through a living text.</p>
+        </div>
+
+        <!-- Church of the Holy Sepulchre -->
+        <div class="site-entry">
+          <h3>Church of the Holy Sepulchre</h3>
+          <p>Built over both Golgotha — the hill of the crucifixion — and the tomb of the resurrection, this is the most venerated site in Christianity. The stone of anointing, the dark interior of the rotunda, the queue of pilgrims waiting to enter the aedicule: none of it prepares you for actually being there.</p>
           <div class="activity-tag-row">
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
+            <span class="activity-tag">Golgotha</span>
+            <span class="activity-tag">Tomb of Resurrection</span>
+            <span class="activity-tag">Old City</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Church of the Holy Sepulchre · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Church of the Holy Sepulchre · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Church of the Holy Sepulchre · Add caption</p></div>
           </div>
         </div>
 
-        <div class="photo-grid">
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Jerusalem · Add caption here</p>
+        <!-- Wailing Wall -->
+        <div class="site-entry">
+          <h3>The Western Wall (Wailing Wall)</h3>
+          <p>The last remaining structure of the Second Temple, and the holiest site in Judaism. Thousands of notes folded into its ancient stones, prayers left in the cracks. The plaza in front of it is vast and quiet in a way that a busy place rarely is.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Second Temple</span>
+            <span class="activity-tag">Old City</span>
+            <span class="activity-tag">Prayer</span>
           </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Jerusalem · Add caption here</p>
-          </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Jerusalem · Add caption here</p>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Western Wall · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Western Wall · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Western Wall · Add caption</p></div>
           </div>
         </div>
-      </div>
 
-      <!-- TEL AVIV PANEL -->
-      <div class="city-panel" id="panel-tel-aviv">
+        <!-- Via Dolorosa -->
+        <div class="site-entry">
+          <h3>Via Dolorosa</h3>
+          <p>The path Jesus walked to his crucifixion, marked by the traditional 14 Stations of the Cross. The streets of the Old City narrow and twist as the route winds through them. Pilgrims carry wooden crosses on Fridays. The weight of the symbolism is felt at every turn.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">14 Stations of the Cross</span>
+            <span class="activity-tag">Old City</span>
+            <span class="activity-tag">Procession Route</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Via Dolorosa · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Via Dolorosa · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Via Dolorosa · Add caption</p></div>
+          </div>
+        </div>
+
+        <!-- Mount of Olives & Gethsemane -->
+        <div class="site-entry">
+          <h3>Mount of Olives &amp; Garden of Gethsemane</h3>
+          <p>The Mount of Olives looks directly across the Kidron Valley at the Old City walls. Gethsemane sits at its foot, with olive trees that are centuries old. Dominus Flevit — the teardrop-shaped church where Jesus wept over Jerusalem — offers one of the most moving views in the city. The Church of All Nations stands beside the rock where Jesus prayed before his arrest.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Garden of Gethsemane</span>
+            <span class="activity-tag">Dominus Flevit</span>
+            <span class="activity-tag">Church of All Nations</span>
+            <span class="activity-tag">Kidron Valley</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Mount of Olives · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Garden of Gethsemane · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Dominus Flevit · Add caption</p></div>
+          </div>
+        </div>
+
+        <!-- Garden Tomb -->
+        <div class="site-entry">
+          <h3>The Garden Tomb</h3>
+          <p>Outside the Old City walls, the Garden Tomb offers a serene alternative site for the burial and resurrection. Favoured by many Protestant pilgrims, the garden itself is quiet and carefully kept — a space for reflection that the crowded Holy Sepulchre cannot always provide.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Protestant Tradition</span>
+            <span class="activity-tag">Resurrection Site</span>
+            <span class="activity-tag">Garden</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Garden Tomb · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Garden Tomb · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Garden Tomb · Add caption</p></div>
+          </div>
+        </div>
+
+      </div><!-- /panel-jerusalem -->
+
+      <!-- GALILEE -->
+      <div class="city-panel" id="panel-galilee">
         <div class="city-panel-header">
-          <h2>Tel Aviv</h2>
-          <p>
-Lorem ipsum...          </p>
+          <h2>The Galilee Region</h2>
+          <p>Northern Israel holds most of the sites of Jesus' active ministry. The Sea of Galilee is smaller than the imagination builds it, which makes the stories feel closer, not further. The hills are green, the water is still in the mornings, and the place has a quietness that Jerusalem, for all its holiness, does not have.</p>
+        </div>
+
+        <!-- Nazareth -->
+        <div class="site-entry">
+          <h3>Nazareth</h3>
+          <p>The boyhood home of Jesus. The Basilica of the Annunciation is built directly over the grotto where the angel Gabriel appeared to Mary. St. Joseph's Church stands over the traditional site of Joseph's carpentry workshop. The old city still carries traces of how Nazareth looked in the first century.</p>
           <div class="activity-tag-row">
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
+            <span class="activity-tag">Basilica of the Annunciation</span>
+            <span class="activity-tag">St. Joseph's Church</span>
+            <span class="activity-tag">Boyhood of Jesus</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Nazareth · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Basilica of the Annunciation · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Nazareth · Add caption</p></div>
           </div>
         </div>
 
-        <div class="photo-grid">
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Tel Aviv · Add caption here</p>
+        <!-- Capernaum -->
+        <div class="site-entry">
+          <h3>Capernaum</h3>
+          <p>On the northern shore of the Sea of Galilee, Capernaum was Jesus' adopted base of ministry. The ruins of a first-century synagogue stand here, and an octagonal church has been built over the site of Peter's house. It is possible to stand where the text says he stood.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Sea of Galilee</span>
+            <span class="activity-tag">Peter's House</span>
+            <span class="activity-tag">First-Century Synagogue</span>
           </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Tel Aviv · Add caption here</p>
-          </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Tel Aviv · Add caption here</p>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Capernaum · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Capernaum · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Sea of Galilee · Add caption</p></div>
           </div>
         </div>
-      </div>
+
+        <!-- Mount of Beatitudes -->
+        <div class="site-entry">
+          <h3>Mount of Beatitudes</h3>
+          <p>A gentle hill above the Sea of Galilee, where Jesus gave the Sermon on the Mount. The Church of the Beatitudes sits at the top, surrounded by gardens. The view across the water from here is one of the most peaceful in Israel. The Beatitudes on the church windows read differently when you are standing on the hill where they were first spoken.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Sermon on the Mount</span>
+            <span class="activity-tag">Church of the Beatitudes</span>
+            <span class="activity-tag">Sea of Galilee</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Mount of Beatitudes · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Mount of Beatitudes · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">View from the Mount · Add caption</p></div>
+          </div>
+        </div>
+
+        <!-- Tabgha -->
+        <div class="site-entry">
+          <h3>Tabgha</h3>
+          <p>The Church of the Multiplication of the Loaves and Fishes stands at Tabgha, on the shore of the Sea of Galilee. A famous ancient mosaic inside depicts the loaves and fishes. Simple, small, and extraordinarily precise in its witness to a miracle.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Miracle of the Loaves and Fishes</span>
+            <span class="activity-tag">Church of the Multiplication</span>
+            <span class="activity-tag">Ancient Mosaic</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Tabgha · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Church of the Multiplication · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Tabgha · Add caption</p></div>
+          </div>
+        </div>
+
+        <!-- Jordan River -->
+        <div class="site-entry">
+          <h3>Jordan River — Yardenit</h3>
+          <p>Yardenit is the traditional baptismal site just south of the Sea of Galilee, where the river flows out of the lake. Pilgrims in white robes wade into the water to be baptised or to renew their baptism. The river is narrower and greener than most people expect. The moment carries weight regardless of what you bring to it.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Baptism of Jesus</span>
+            <span class="activity-tag">Yardenit</span>
+            <span class="activity-tag">Jordan River</span>
+            <span class="activity-tag">Pilgrimage Renewal</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Jordan River · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Yardenit · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Jordan River · Add caption</p></div>
+          </div>
+        </div>
+
+      </div><!-- /panel-galilee -->
+
+      <!-- ADDITIONAL SITES -->
+      <div class="city-panel" id="panel-other">
+        <div class="city-panel-header">
+          <h2>Additional Sacred Sites</h2>
+          <p>Beyond Jerusalem and Galilee, several other sites mark events that anchor the Christian story. Each one demands its own stop.</p>
+        </div>
+
+        <!-- Mount Tabor -->
+        <div class="site-entry">
+          <h3>Mount Tabor</h3>
+          <p>Rising steeply from the Jezreel Valley, Mount Tabor is the traditional site of the Transfiguration, where Jesus appeared in radiant glory before Peter, James, and John. The Basilica of the Transfiguration crowns the summit. The drive up the narrow switchback road is an experience in itself.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Transfiguration</span>
+            <span class="activity-tag">Basilica of the Transfiguration</span>
+            <span class="activity-tag">Jezreel Valley</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Mount Tabor · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Basilica of the Transfiguration · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">View from Mount Tabor · Add caption</p></div>
+          </div>
+        </div>
+
+        <!-- Cana -->
+        <div class="site-entry">
+          <h3>Cana (Kafr Kanna)</h3>
+          <p>Cana is where Jesus performed his first recorded miracle, turning water into wine at a wedding feast. The Wedding Church here marks the site. Many pilgrims bring their wedding rings to be blessed. The town is small and the church modest, but the significance sits larger than the surroundings.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">First Miracle</span>
+            <span class="activity-tag">Wedding at Cana</span>
+            <span class="activity-tag">Wedding Church</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Cana · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Wedding Church, Cana · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Cana · Add caption</p></div>
+          </div>
+        </div>
+
+        <!-- Bethlehem -->
+        <div class="site-entry">
+          <h3>Bethlehem</h3>
+          <p>A short distance south of Jerusalem in the West Bank, Bethlehem is home to the Church of the Nativity, built over the grotto traditionally identified as the birthplace of Jesus. Entering through the Door of Humility, a deliberately low entrance that forces every visitor to bow, is the first thing that happens. What comes next is harder to put into words.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Church of the Nativity</span>
+            <span class="activity-tag">Grotto of the Nativity</span>
+            <span class="activity-tag">West Bank</span>
+            <span class="activity-tag">Birthplace of Jesus</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Bethlehem · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Church of the Nativity · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Grotto of the Nativity · Add caption</p></div>
+          </div>
+        </div>
+
+        <!-- Golan Heights -->
+        <div class="site-entry">
+          <h3>Golan Heights</h3>
+          <p>The Golan Heights rise steeply above the Sea of Galilee and the Jordan Valley, forming the northeastern boundary of Israel. The views are expansive and the landscape is open and striking. Add your own memories and notes from the visit here when you are ready.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Golan Heights</span>
+            <span class="activity-tag">Northern Israel</span>
+            <span class="activity-tag">Add your tags</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Golan Heights · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Golan Heights · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Golan Heights · Add caption</p></div>
+          </div>
+        </div>
+
+      </div><!-- /panel-other -->
 
     </section>
 
-    <!-- BACK -->
     <div class="back-section">
       <a href="about-extended.html#travel" class="back-link">Back to Travel</a>
     </div>
 
   </div><!-- /page-body -->
 
-  <!-- FOOTER -->
   <footer>
-    <p>
-      Engr. BJ Chiawa · <a href="about-extended.html">Full Profile</a> · <a href="https://manbeejay.github.io">Home</a>
-    </p>
+    <p>Engr. BJ Chiawa · <a href="about-extended.html">Full Profile</a> · <a href="https://manbeejay.github.io">Home</a></p>
   </footer>
 
   <script>
     function openCity(btn) {
-      // Close all panels and deactivate all buttons
+      const wasActive = btn.classList.contains('active');
       document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.city-panel').forEach(p => p.classList.remove('open'));
-
-      const cityId = btn.dataset.city;
-      const panel = document.getElementById('panel-' + cityId);
-
-      // If clicking the already-active city, just close (toggle off)
-      if (btn.classList.contains('active')) {
-        btn.classList.remove('active');
-        return;
-      }
-
+      if (wasActive) return;
       btn.classList.add('active');
+      const panel = document.getElementById('panel-' + btn.dataset.city);
       if (panel) {
         panel.classList.add('open');
-        // Smooth scroll to panel
-        setTimeout(() => {
-          panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 50);
+        setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
       }
     }
   </script>
