@@ -7,8 +7,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
       --bg: #0e0e0e; --surface: #161616; --border: #2a2a2a;
       --gold: #c9a84c; --gold-dim: #8a6e2f;
@@ -17,21 +19,26 @@
       --mono: 'DM Mono', 'Courier New', monospace;
       --body-font: 'Lora', Georgia, serif;
     }
+
     html { scroll-behavior: smooth; }
     body { background: var(--bg); color: var(--text); font-family: var(--body-font); font-size: 16px; line-height: 1.75; }
+
+    /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; background: rgba(14,14,14,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
     .nav-logo { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); text-decoration: none; }
     .nav-back { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .nav-back:hover { color: var(--gold); }
     .nav-back::before { content: '← '; }
+
+    /* HERO */
     .hero { padding-top: 5rem; position: relative; height: 90vh; min-height: 500px; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
-    .hero-image { position: absolute; inset: 0; background: #111; background-size: cover; background-position: center; }
-    .hero-image.placeholder { background: radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.06) 0%, transparent 60%), repeating-linear-gradient(135deg, transparent, transparent 30px, rgba(201,168,76,0.025) 30px, rgba(201,168,76,0.025) 31px), #111; }
-    .hero-flag { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 8rem; opacity: 0.12; pointer-events: none; user-select: none; }
-    .hero-photo-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; text-align: center; pointer-events: none; }
-    .hero-photo-hint p { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); opacity: 0.5; margin-top: 0.5rem; }
-    .hero-photo-hint .hint-icon { font-size: 2.5rem; opacity: 0.15; }
-    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, rgba(14,14,14,0.5) 65%, rgba(14,14,14,0.95) 100%); }
+    .hero-image { position: absolute; inset: 0; background-size: cover; background-position: center; }
+    .hero-image.placeholder { background: radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.09) 0%, transparent 55%), repeating-linear-gradient(135deg, transparent, transparent 30px, rgba(201,168,76,0.025) 30px, rgba(201,168,76,0.025) 31px), #0e0d0b; }
+    .hero-flag { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 8rem; opacity: 0.1; pointer-events: none; user-select: none; }
+    .hero-photo-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 3; text-align: center; pointer-events: none; }
+    .hero-photo-hint p { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); opacity: 0.45; margin-top: 0.5rem; }
+    .hero-photo-hint .hint-icon { font-size: 2.5rem; opacity: 0.13; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, rgba(14,14,14,0.55) 65%, rgba(14,14,14,0.97) 100%); }
     .hero-content { position: relative; z-index: 2; padding: 0 3rem 3.5rem; max-width: 860px; }
     .hero-breadcrumb { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 1rem; }
     .hero-breadcrumb a { color: inherit; text-decoration: none; }
@@ -39,7 +46,46 @@
     .hero h1 { font-family: var(--serif); font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 400; color: var(--white); line-height: 1.1; margin-bottom: 0.5rem; }
     .hero-flag-inline { font-size: 0.7em; vertical-align: middle; margin-right: 0.3em; }
     .hero-subtitle { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.12em; }
+
+    /* TRIP CONTEXT BANNER */
+    .trip-banner {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .trip-banner-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .trip-banner-label {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .trip-banner-value {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--text);
+    }
+    .trip-banner-divider {
+      width: 1px;
+      height: 2rem;
+      background: var(--border);
+    }
+
+    /* PAGE BODY */
     .page-body { max-width: 860px; margin: 0 auto; padding: 0 3rem; }
+
+    /* OVERVIEW */
     .country-desc { padding: 4rem 0 3rem; border-bottom: 1px solid var(--border); }
     .section-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
     .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
@@ -48,29 +94,48 @@
     .stat { display: flex; flex-direction: column; gap: 0.2rem; }
     .stat-value { font-family: var(--serif); font-size: 1.6rem; color: var(--gold); line-height: 1; }
     .stat-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+    /* CITY BUTTONS */
     .cities-section { padding: 3.5rem 0; }
-    .cities-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
-    .city-btn { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; padding: 1.2rem 1.4rem; background: var(--surface); border: 1px solid var(--border); cursor: pointer; transition: border-color 0.2s, background 0.2s; min-width: 110px; }
+    .cities-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 1.5rem; }
+    .city-btn { display: flex; flex-direction: column; align-items: center; gap: 0.45rem; padding: 1.2rem 1.4rem; background: var(--surface); border: 1px solid var(--border); cursor: pointer; transition: border-color 0.2s, background 0.2s; min-width: 120px; font-family: inherit; }
     .city-btn:hover, .city-btn.active { border-color: var(--gold-dim); background: #1e1e1e; }
     .city-btn.active { border-color: var(--gold); }
     .city-icon { font-size: 2rem; line-height: 1; }
-    .city-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-align: center; }
+    .city-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-align: center; line-height: 1.4; }
+    .city-btn .city-days { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.1em; color: var(--gold-dim); }
     .city-btn.active .city-label, .city-btn:hover .city-label { color: var(--gold); }
+
+    /* CITY PANEL */
     .city-panel { display: none; padding: 2.5rem 0 1rem; border-top: 1px solid var(--border); margin-top: 1.5rem; }
     .city-panel.open { display: block; }
-    .city-panel-header h2 { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; color: var(--white); margin-bottom: 0.5rem; }
-    .city-panel-header p { color: var(--text); max-width: 620px; font-size: 0.95rem; }
-    .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2px; background: var(--border); margin-top: 2rem; }
+    .city-panel-header { margin-bottom: 2rem; }
+    .city-panel-header h2 { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; color: var(--white); margin-bottom: 0.3rem; }
+    .city-panel-header .days-badge { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 0.8rem; display: block; }
+    .city-panel-header > p { color: var(--text); max-width: 640px; font-size: 0.95rem; margin-bottom: 0.8rem; }
+
+    /* SITE ENTRIES */
+    .site-entry { margin-top: 2.8rem; padding-top: 2.2rem; border-top: 1px solid var(--border); }
+    .site-entry:first-of-type { margin-top: 1rem; padding-top: 0; border-top: none; }
+    .site-entry h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+    .site-entry p { color: var(--text); font-size: 0.92rem; max-width: 640px; margin-bottom: 0.6rem; }
+
+    /* ACTIVITY TAGS */
+    .activity-tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .activity-tag { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--border); color: var(--muted); padding: 0.28rem 0.65rem; }
+
+    /* PHOTO GRID */
+    .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 2px; background: var(--border); margin-top: 1.5rem; }
     .photo-item { background: var(--surface); position: relative; overflow: hidden; }
-    .photo-placeholder { width: 100%; aspect-ratio: 4 / 3; background: #181818; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; position: relative; }
+    .photo-placeholder { width: 100%; aspect-ratio: 4/3; background: #181818; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; position: relative; }
     .photo-placeholder::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(201,168,76,0.03) 12px, rgba(201,168,76,0.03) 13px); }
-    .photo-placeholder-icon { font-size: 1.6rem; opacity: 0.15; position: relative; }
-    .photo-placeholder-text { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); opacity: 0.4; position: relative; }
-    .photo-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; aspect-ratio: 4 / 3; }
+    .photo-placeholder-icon { font-size: 1.5rem; opacity: 0.14; position: relative; }
+    .photo-placeholder-text { font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); opacity: 0.38; position: relative; }
+    .photo-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; aspect-ratio: 4/3; }
     .photo-item:hover .photo-img { transform: scale(1.05); }
-    .photo-caption { padding: 0.7rem 0.9rem; font-family: var(--mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.06em; line-height: 1.5; }
-    .activity-tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
-    .activity-tag { font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--border); color: var(--muted); padding: 0.3rem 0.7rem; }
+    .photo-caption { padding: 0.65rem 0.85rem; font-family: var(--mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.06em; line-height: 1.5; }
+
+    /* BACK + FOOTER */
     .back-section { padding: 3rem 0 5rem; border-top: 1px solid var(--border); margin-top: 2rem; }
     .back-link { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .back-link:hover { color: var(--gold); }
@@ -79,7 +144,16 @@
     footer p { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.12em; }
     footer a { color: var(--gold-dim); text-decoration: none; }
     footer a:hover { color: var(--gold); }
-    @media (max-width: 640px) { nav { padding: 1rem 1.4rem; } .hero-content { padding: 0 1.4rem 2.5rem; } .page-body { padding: 0 1.4rem; } .photo-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.4rem; }
+      .hero-content { padding: 0 1.4rem 2.5rem; }
+      .trip-banner { padding: 1rem 1.4rem; gap: 1rem; }
+      .trip-banner-divider { display: none; }
+      .page-body { padding: 0 1.4rem; }
+      .city-btn { min-width: 100px; }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
 </head>
 <body>
@@ -90,11 +164,8 @@
   </nav>
 
   <header class="hero">
-    <div class="hero-image" style="background-image: url('photos/uae-hero.jpg')">
-      <!-- To add your hero photo:
-           1. Remove the "placeholder" class from .hero-image
-           2. Add inline style: style="background-image: url('photos/uae-hero.jpg')"
-           Or place an <img> tag here and adjust with CSS -->
+    <div class="hero-image placeholder">
+      <!-- To add hero photo: remove "placeholder" class, add style="background-image: url('photos/uae-hero.jpg')" -->
     </div>
     <div class="hero-flag" aria-hidden="true">🇦🇪</div>
     <div class="hero-photo-hint" aria-hidden="true">
@@ -103,85 +174,277 @@
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-breadcrumb">
-        <a href="about-extended.html#travel">Travel</a> &nbsp;/&nbsp; United Arab Emirates
-      </p>
-      <h1><span class="hero-flag-inline">🇦🇪</span>UAE</h1>
-      <p class="hero-subtitle">Asia · 2013</p>
+      <p class="hero-breadcrumb"><a href="about-extended.html#travel">Travel</a> &nbsp;/&nbsp; United Arab Emirates</p>
+      <h1><span class="hero-flag-inline">🇦🇪</span>United Arab Emirates</h1>
+      <p class="hero-subtitle">Middle East · Family Holiday · 2013</p>
     </div>
   </header>
+
+  <!-- TRIP CONTEXT BANNER -->
+  <div class="trip-banner">
+    <div class="trip-banner-item">
+      <span class="trip-banner-label">Year</span>
+      <span class="trip-banner-value">2013</span>
+    </div>
+    <div class="trip-banner-divider"></div>
+    <div class="trip-banner-item">
+      <span class="trip-banner-label">Duration</span>
+      <span class="trip-banner-value">10 Days</span>
+    </div>
+    <div class="trip-banner-divider"></div>
+    <div class="trip-banner-item">
+      <span class="trip-banner-label">Travelling with</span>
+      <span class="trip-banner-value">Wife · Son · Mother-in-law</span>
+    </div>
+    <div class="trip-banner-divider"></div>
+    <div class="trip-banner-item">
+      <span class="trip-banner-label">Split</span>
+      <span class="trip-banner-value">Dubai 8 days · Abu Dhabi 1 day</span>
+    </div>
+    <div class="trip-banner-divider"></div>
+    <div class="trip-banner-item">
+      <span class="trip-banner-label">Origin</span>
+      <span class="trip-banner-value">Enugu, Nigeria</span>
+    </div>
+  </div>
 
   <div class="page-body">
 
     <section class="country-desc">
       <p class="section-label">Overview</p>
       <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+        A 10-day family holiday in 2013, flying out of Enugu with the family in tow: wife, son, and mother-in-law. The UAE delivered on every level. The plan split eight days in Dubai against one full day in Abu Dhabi, which was not a balanced split on paper but turned out to be the right one. Dubai at that pace rewards you; Abu Dhabi in a single concentrated day does too.
+      </p>
+      <p>
+        The UAE is a place that operates at the outer edge of ambition. The buildings are taller than they should be, the malls are larger than they need to be, the desert is right there behind everything, and the contrast between the two makes the whole experience feel slightly unreal in the best way. For a family with a child in tow, it worked extraordinarily well.
       </p>
       <div class="country-stats">
         <div class="stat">
-          <span class="stat-value">1</span>
-          <span class="stat-label">Years</span>
+          <span class="stat-value">10</span>
+          <span class="stat-label">Days</span>
         </div>
         <div class="stat">
           <span class="stat-value">2</span>
-          <span class="stat-label">Cities</span>
+          <span class="stat-label">Emirates</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">4</span>
+          <span class="stat-label">Travellers</span>
         </div>
         <div class="stat">
           <span class="stat-value">2013</span>
-          <span class="stat-label">Year visited</span>
+          <span class="stat-label">Year</span>
         </div>
       </div>
     </section>
 
     <section class="cities-section">
-      <p class="section-label">Cities</p>
+      <p class="section-label">Emirates</p>
 
       <div class="cities-row">
         <button class="city-btn" data-city="dubai" onclick="openCity(this)">
-          <span class="city-icon">🛢</span>
+          <span class="city-icon">🏗</span>
           <span class="city-label">Dubai</span>
+          <span class="city-days">Days 1 – 8</span>
+        </button>
+        <button class="city-btn" data-city="abudhabi" onclick="openCity(this)">
+          <span class="city-icon">🕌</span>
+          <span class="city-label">Abu Dhabi</span>
+          <span class="city-days">Day 9</span>
         </button>
       </div>
 
+      <!-- DUBAI -->
       <div class="city-panel" id="panel-dubai">
         <div class="city-panel-header">
           <h2>Dubai</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          </p>
+          <span class="days-badge">Days 1 – 8 · 8 nights</span>
+          <p>Eight days in Dubai is enough time to stop treating it as spectacle and start treating it as a place. The record-breaking buildings become background after a day or two. What stays is the texture of it: the souks in the morning, the fountain at night, the desert just outside the city limits, and the sheer variety of what a single place can contain.</p>
+        </div>
+
+        <!-- Burj Khalifa & Dubai Fountain -->
+        <div class="site-entry">
+          <h3>Burj Khalifa &amp; Dubai Fountain</h3>
+          <p>The Burj Khalifa is the tallest building in the world and looks it from every angle. The view from the observation deck puts the scale of Dubai into perspective in a way that ground level cannot. In the evening, the Dubai Fountain performs in the lake below it, the water choreographed to music in sheets and arcs that reach 150 metres. Watching it from the waterfront after dark, with the tower lit above it, is one of those experiences that is both completely engineered and entirely genuine.</p>
           <div class="activity-tag-row">
-            <span class="activity-tag">Lorem ipsum dolor</span>
-            <span class="activity-tag">Lorem ipsum dolor</span>
-            <span class="activity-tag">Lorem ipsum dolor</span>
-            <span class="activity-tag">Lorem ipsum dolor</span>
+            <span class="activity-tag">World's Tallest Building</span>
+            <span class="activity-tag">Observation Deck</span>
+            <span class="activity-tag">Dubai Fountain</span>
+            <span class="activity-tag">Evening Show</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Burj Khalifa · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Dubai Fountain · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Burj Khalifa at night · Add caption</p></div>
           </div>
         </div>
 
-      <div class="photo-grid">
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Dubai · Add caption here</p>
+        <!-- Dubai Mall -->
+        <div class="site-entry">
+          <h3>Dubai Mall</h3>
+          <p>Two days inside the Dubai Mall is not excess — it is barely enough. The mall is less a shopping centre than a small city, with an indoor ice rink, a massive aquarium, a dinosaur skeleton in the atrium, and more retail square footage than most towns. For a family with a child, the variety kept everyone occupied and the food options covered every preference with ease.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">World's Largest Mall</span>
+            <span class="activity-tag">Dubai Aquarium</span>
+            <span class="activity-tag">Ice Rink</span>
+            <span class="activity-tag">Family Shopping</span>
           </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Dubai · Add caption here</p>
-          </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Dubai · Add caption here</p>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Dubai Mall · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Dubai Mall Aquarium · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Dubai Mall · Add caption</p></div>
           </div>
         </div>
-      </div>
+
+        <!-- Dubai Marina -->
+        <div class="site-entry">
+          <h3>Dubai Marina</h3>
+          <p>Dubai Marina is the newer, sleeker side of the city. High-rises line a purpose-built canal full of yachts, and the waterfront walk connects one restaurant terrace to the next. The contrast with the old city is deliberate and complete. Evening dining here with the water and the lit towers alongside it was one of the more relaxed moments of the trip.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Waterfront Dining</span>
+            <span class="activity-tag">Luxury Boutiques</span>
+            <span class="activity-tag">Marina Walk</span>
+            <span class="activity-tag">Yachts</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Dubai Marina · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Dubai Marina at night · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Dubai Marina · Add caption</p></div>
+          </div>
+        </div>
+
+        <!-- Gold Souk, Spice Souk, Abra -->
+        <div class="site-entry">
+          <h3>Gold Souk, Spice Souk &amp; the Dubai Creek Abra</h3>
+          <p>The old city sits on the Dubai Creek, and the contrast with the Marina could not be sharper. The Gold Souk's narrow covered lanes are lined entirely with jewellery — necklaces, bangles, and rings in quantities that seem impossible. The Spice Souk nearby fills the air with cardamom, saffron, and dried rose petals. Crossing the Creek on an Abra, a small wooden water taxi, costs next to nothing and is one of the best five minutes in Dubai.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Gold Souk</span>
+            <span class="activity-tag">Spice Souk</span>
+            <span class="activity-tag">Abra Water Taxi</span>
+            <span class="activity-tag">Dubai Creek</span>
+            <span class="activity-tag">Old Dubai</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Gold Souk · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Spice Souk · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Abra on the Dubai Creek · Add caption</p></div>
+          </div>
+        </div>
+
+        <!-- Desert Safari -->
+        <div class="site-entry">
+          <h3>Desert Safari</h3>
+          <p>An afternoon desert safari was the single most memorable experience of the Dubai days. The dune bashing in 4x4s is exactly as alarming as it sounds and exactly as enjoyable. Camel riding followed, then a camp in the desert as the sun went down, and a barbecue dinner under a sky full of stars with no city light to compete with it. Taking the family into the desert and watching everyone react differently to the same vast quiet was something worth keeping.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Dune Bashing</span>
+            <span class="activity-tag">Camel Riding</span>
+            <span class="activity-tag">Desert Camp</span>
+            <span class="activity-tag">Barbecue under the Stars</span>
+            <span class="activity-tag">Family Adventure</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Desert Safari · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Camel riding · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Desert camp at night · Add caption</p></div>
+          </div>
+        </div>
+
+        <!-- Burj Al Arab & Jumeirah -->
+        <div class="site-entry">
+          <h3>Burj Al Arab, Jumeirah Beach &amp; Palm Jumeirah</h3>
+          <p>The Burj Al Arab — the sail-shaped hotel on its own artificial island — is one of those buildings that looks exactly like its photographs and still surprises you in person. Access to the interior requires a reservation, but the exterior and the approach road make for photographs worth keeping. Jumeirah Beach nearby is clean and wide, and Palm Jumeirah extends into the Gulf in a shape that only makes full sense from the air.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Burj Al Arab</span>
+            <span class="activity-tag">Jumeirah Beach</span>
+            <span class="activity-tag">Palm Jumeirah</span>
+            <span class="activity-tag">Iconic Architecture</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Burj Al Arab · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Jumeirah Beach · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Palm Jumeirah · Add caption</p></div>
+          </div>
+        </div>
+
+      </div><!-- /panel-dubai -->
+
+      <!-- ABU DHABI -->
+      <div class="city-panel" id="panel-abudhabi">
+        <div class="city-panel-header">
+          <h2>Abu Dhabi</h2>
+          <span class="days-badge">Day 9 · Return day trip · approx. 1.5 hrs drive from Dubai</span>
+          <p>One full day in the UAE capital was enough to understand why people call it the more considered of the two cities. Abu Dhabi is quieter, more deliberate, and carries a cultural weight that Dubai's relentless momentum sometimes leaves behind. The day packed in more than seemed possible: the Grand Mosque, the Louvre, the Heritage Village, the Corniche, and Yas Island.</p>
+        </div>
+
+        <!-- Sheikh Zayed Grand Mosque -->
+        <div class="site-entry">
+          <h3>Sheikh Zayed Grand Mosque</h3>
+          <p>One of the largest mosques in the world, and by any measure one of the most beautiful buildings in the UAE. The white marble, the 82 domes, the world's largest hand-knotted carpet inside the main prayer hall, and the courtyard that reflects the sky in its polished floors. Visitors of all faiths are welcome outside prayer times. The scale and the silence inside it are both unexpected.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Islamic Architecture</span>
+            <span class="activity-tag">White Marble</span>
+            <span class="activity-tag">World's Largest Carpet</span>
+            <span class="activity-tag">Open to Visitors</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Sheikh Zayed Grand Mosque · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Grand Mosque interior · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Grand Mosque courtyard · Add caption</p></div>
+          </div>
+        </div>
+
+        <!-- Louvre Abu Dhabi -->
+        <div class="site-entry">
+          <h3>Louvre Abu Dhabi</h3>
+          <p>The Louvre Abu Dhabi sits on Saadiyat Island under a vast perforated dome designed by Jean Nouvel. Light falls through the dome in shifting patterns across the galleries below. The collection spans human civilisation across cultures and centuries, deliberately arranged to show connections rather than divisions. For a family, the building alone justifies the visit even before the art inside it.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Jean Nouvel Architecture</span>
+            <span class="activity-tag">Saadiyat Island</span>
+            <span class="activity-tag">World Art Collection</span>
+            <span class="activity-tag">The Rain of Light Dome</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Louvre Abu Dhabi · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Louvre Abu Dhabi interior · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Louvre Abu Dhabi · Add caption</p></div>
+          </div>
+        </div>
+
+        <!-- Heritage Village -->
+        <div class="site-entry">
+          <h3>Heritage Village</h3>
+          <p>The Heritage Village on the Corniche reconstructs traditional Emirati life before oil: pearl diving, Bedouin camps, falconry, and the dhow-building trade that connected the Gulf to the world for centuries. A deliberate counterpoint to everything else Abu Dhabi has become, and a useful one.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Emirati History</span>
+            <span class="activity-tag">Traditional Culture</span>
+            <span class="activity-tag">Pearl Diving Heritage</span>
+            <span class="activity-tag">Corniche</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Heritage Village · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Heritage Village · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Corniche · Add caption</p></div>
+          </div>
+        </div>
+
+        <!-- Yas Island -->
+        <div class="site-entry">
+          <h3>Yas Island — Ferrari World</h3>
+          <p>Yas Island holds Ferrari World Abu Dhabi, home to Formula Rossa — at the time, the fastest roller coaster on earth, reaching 240 km/h. The red Ferrari-themed dome that covers the park is visible from the highway. For a family with a young son, this was the highlight of the Abu Dhabi day and possibly of the entire trip.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Ferrari World</span>
+            <span class="activity-tag">Formula Rossa</span>
+            <span class="activity-tag">Yas Island</span>
+            <span class="activity-tag">Family Thrills</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Ferrari World Abu Dhabi · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Yas Island · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Ferrari World · Add caption</p></div>
+          </div>
+        </div>
+
+      </div><!-- /panel-abudhabi -->
 
     </section>
 
@@ -189,7 +452,7 @@
       <a href="about-extended.html#travel" class="back-link">Back to Travel</a>
     </div>
 
-  </div>
+  </div><!-- /page-body -->
 
   <footer>
     <p>Engr. BJ Chiawa · <a href="about-extended.html">Full Profile</a> · <a href="https://manbeejay.github.io">Home</a></p>
@@ -197,11 +460,12 @@
 
   <script>
     function openCity(btn) {
+      const wasActive = btn.classList.contains('active');
       document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.city-panel').forEach(p => p.classList.remove('open'));
-      const cityId = btn.dataset.city;
-      const panel = document.getElementById('panel-' + cityId);
+      if (wasActive) return;
       btn.classList.add('active');
+      const panel = document.getElementById('panel-' + btn.dataset.city);
       if (panel) {
         panel.classList.add('open');
         setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
