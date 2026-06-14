@@ -12,706 +12,530 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #0e0e0e;
-      --surface:   #161616;
-      --border:    #2a2a2a;
-      --gold:      #c9a84c;
-      --gold-dim:  #8a6e2f;
-      --text:      #d4cfc8;
-      --muted:     #6e6b65;
-      --white:     #f0ece5;
-      --serif:     'Playfair Display', Georgia, serif;
-      --mono:      'DM Mono', 'Courier New', monospace;
+      --bg: #0e0e0e; --surface: #161616; --border: #2a2a2a;
+      --gold: #c9a84c; --gold-dim: #8a6e2f;
+      --text: #d4cfc8; --muted: #6e6b65; --white: #f0ece5;
+      --serif: 'Playfair Display', Georgia, serif;
+      --mono: 'DM Mono', 'Courier New', monospace;
       --body-font: 'Lora', Georgia, serif;
     }
 
     html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--body-font); font-size: 16px; line-height: 1.75; }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--body-font);
-      font-size: 16px;
-      line-height: 1.75;
-    }
-
-    /* ─── NAV ─── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.2rem 3rem;
-      background: rgba(14,14,14,0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      text-decoration: none;
-    }
-
-    .nav-back {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; background: rgba(14,14,14,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); text-decoration: none; }
+    .nav-back { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .nav-back:hover { color: var(--gold); }
     .nav-back::before { content: '← '; }
 
-    /* ─── HERO ─── */
-    .hero {
-      padding-top: 5rem;
-      position: relative;
-      height: 90vh;
-      min-height: 500px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      overflow: hidden;
-    }
-
-    .hero-image {
-      position: absolute;
-      inset: 0;
-      background: #111;
-      /* Replace with: background-image: url('photos/uk-hero.jpg'); */
-      background-size: cover;
-      background-position: center;
-    }
-
-    /* Placeholder pattern for when no image is set */
-    .hero-image.placeholder {
-      background:
-        radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.06) 0%, transparent 60%),
-        repeating-linear-gradient(
-          135deg,
-          transparent,
-          transparent 30px,
-          rgba(201,168,76,0.025) 30px,
-          rgba(201,168,76,0.025) 31px
-        ),
-        #111;
-    }
-
-    .hero-flag {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 8rem;
-      opacity: 0.12;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        transparent 30%,
-        rgba(14,14,14,0.5) 65%,
-        rgba(14,14,14,0.95) 100%
-      );
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 0 3rem 3.5rem;
-      max-width: 860px;
-    }
-
-    .hero-breadcrumb {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      margin-bottom: 1rem;
-    }
-
-    .hero-breadcrumb a {
-      color: inherit;
-      text-decoration: none;
-    }
-
+    /* HERO */
+    .hero { padding-top: 5rem; position: relative; height: 90vh; min-height: 500px; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
+    .hero-image { position: absolute; inset: 0; background-size: cover; background-position: center; }
+    .hero-image.placeholder { background: radial-gradient(ellipse at 60% 40%, rgba(180,30,30,0.07) 0%, transparent 55%), repeating-linear-gradient(135deg, transparent, transparent 30px, rgba(201,168,76,0.02) 30px, rgba(201,168,76,0.02) 31px), #0e0c0c; }
+    .hero-flag { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 8rem; opacity: 0.1; pointer-events: none; user-select: none; }
+    .hero-photo-hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 3; text-align: center; pointer-events: none; }
+    .hero-photo-hint p { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); opacity: 0.45; margin-top: 0.5rem; }
+    .hero-photo-hint .hint-icon { font-size: 2.5rem; opacity: 0.13; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 30%, rgba(14,14,14,0.55) 65%, rgba(14,14,14,0.97) 100%); }
+    .hero-content { position: relative; z-index: 2; padding: 0 3rem 3.5rem; max-width: 860px; }
+    .hero-breadcrumb { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 1rem; }
+    .hero-breadcrumb a { color: inherit; text-decoration: none; }
     .hero-breadcrumb a:hover { color: var(--gold); }
+    .hero h1 { font-family: var(--serif); font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 400; color: var(--white); line-height: 1.1; margin-bottom: 0.5rem; }
+    .hero-flag-inline { font-size: 0.7em; vertical-align: middle; margin-right: 0.3em; }
+    .hero-subtitle { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.12em; }
 
-    .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(2.8rem, 7vw, 5rem);
-      font-weight: 400;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-flag-inline {
-      font-size: 0.7em;
-      vertical-align: middle;
-      margin-right: 0.3em;
-    }
-
-    .hero-subtitle {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-    }
-
-    /* Add hero image instruction */
-    .hero-photo-hint {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 3;
-      text-align: center;
-      pointer-events: none;
-    }
-
-    .hero-photo-hint p {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      opacity: 0.5;
-      margin-top: 0.5rem;
-    }
-
-    .hero-photo-hint .hint-icon {
-      font-size: 2.5rem;
-      opacity: 0.15;
-    }
-
-    /* ─── BODY LAYOUT ─── */
-    .page-body {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 3rem;
-    }
-
-    /* ─── COUNTRY DESCRIPTION ─── */
-    .country-desc {
-      padding: 4rem 0 3rem;
+    /* FLIGHT ROUTE BANNER */
+    .journey-banner {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-    }
-
-    .section-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      margin-bottom: 1.5rem;
+      padding: 1.1rem 3rem;
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      overflow-x: auto;
     }
+    .journey-stop { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+    .journey-stop.highlight { color: var(--gold); }
+    .journey-stop.dim { color: var(--border); }
+    .journey-arrow { font-family: var(--mono); font-size: 0.6rem; color: var(--border); }
 
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
+    /* TRIP CONTEXT BANNER */
+    .trip-banner {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
+    .trip-banner-item { display: flex; flex-direction: column; gap: 0.1rem; }
+    .trip-banner-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .trip-banner-value { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--text); }
+    .trip-banner-divider { width: 1px; height: 2rem; background: var(--border); }
 
-    .country-desc p {
-      color: var(--text);
-      margin-bottom: 1rem;
+    /* PAGE BODY */
+    .page-body { max-width: 860px; margin: 0 auto; padding: 0 3rem; }
+
+    /* OVERVIEW */
+    .country-desc { padding: 4rem 0 3rem; border-bottom: 1px solid var(--border); }
+    .section-label { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .country-desc p { color: var(--text); margin-bottom: 1rem; max-width: 680px; }
+    .country-stats { display: flex; gap: 3rem; margin-top: 2rem; flex-wrap: wrap; }
+    .stat { display: flex; flex-direction: column; gap: 0.2rem; }
+    .stat-value { font-family: var(--serif); font-size: 1.6rem; color: var(--gold); line-height: 1; }
+    .stat-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+    /* CITY BUTTONS */
+    .cities-section { padding: 3.5rem 0; }
+    .cities-row { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 1.5rem; }
+    .city-btn { display: flex; flex-direction: column; align-items: center; gap: 0.45rem; padding: 1.2rem 1.4rem; background: var(--surface); border: 1px solid var(--border); cursor: pointer; transition: border-color 0.2s, background 0.2s; min-width: 110px; font-family: inherit; }
+    .city-btn:hover, .city-btn.active { border-color: var(--gold-dim); background: #1e1e1e; }
+    .city-btn.active { border-color: var(--gold); }
+    .city-icon { font-size: 2rem; line-height: 1; }
+    .city-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-align: center; line-height: 1.4; }
+    .city-btn .city-days { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.1em; color: var(--gold-dim); }
+    .city-btn.active .city-label, .city-btn:hover .city-label { color: var(--gold); }
+
+    /* CITY PANEL */
+    .city-panel { display: none; padding: 2.5rem 0 1rem; border-top: 1px solid var(--border); margin-top: 1.5rem; }
+    .city-panel.open { display: block; }
+    .city-panel-header { margin-bottom: 2rem; }
+    .city-panel-header h2 { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; color: var(--white); margin-bottom: 0.3rem; }
+    .city-panel-header .days-badge { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 0.8rem; display: block; }
+    .city-panel-header .city-intro { color: var(--text); max-width: 640px; font-size: 0.95rem; margin-bottom: 0.8rem; }
+    .city-panel-header .wiki-note { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); border-left: 2px solid var(--border); padding-left: 0.8rem; margin-top: 0.8rem; max-width: 600px; line-height: 1.6; }
+
+    /* SITE ENTRIES */
+    .site-entry { margin-top: 2.8rem; padding-top: 2.2rem; border-top: 1px solid var(--border); }
+    .site-entry:first-of-type { margin-top: 1rem; padding-top: 0; border-top: none; }
+    .site-entry h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: 0.2rem; }
+    .site-entry .company-name { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 0.6rem; display: block; }
+    .site-entry p { color: var(--text); font-size: 0.92rem; max-width: 640px; margin-bottom: 0.6rem; }
+
+    /* BUSINESS MEETINGS LIST */
+    .meetings-block { margin-top: 1.5rem; }
+    .meetings-block h4 { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 1rem; }
+    .meeting-list { list-style: none; display: flex; flex-direction: column; }
+    .meeting-list li { border-bottom: 1px solid var(--border); }
+    .meeting-list li:first-child { border-top: 1px solid var(--border); }
+    .meeting-item { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.85rem 0; }
+    .meeting-company { font-family: var(--serif); font-size: 0.95rem; color: var(--white); }
+    .meeting-sector { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--muted); }
+
+    /* ACTIVITY TAGS */
+    .activity-tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .activity-tag { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--border); color: var(--muted); padding: 0.28rem 0.65rem; }
+
+    /* PHOTO GRID */
+    .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 2px; background: var(--border); margin-top: 1.5rem; }
+    .photo-item { background: var(--surface); position: relative; overflow: hidden; }
+    .photo-placeholder { width: 100%; aspect-ratio: 4/3; background: #181818; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; position: relative; }
+    .photo-placeholder::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(201,168,76,0.03) 12px, rgba(201,168,76,0.03) 13px); }
+    .photo-placeholder-icon { font-size: 1.5rem; opacity: 0.14; position: relative; }
+    .photo-placeholder-text { font-family: var(--mono); font-size: 0.57rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); opacity: 0.38; position: relative; }
+    .photo-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; aspect-ratio: 4/3; }
+    .photo-item:hover .photo-img { transform: scale(1.05); }
+    .photo-caption { padding: 0.65rem 0.85rem; font-family: var(--mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.06em; line-height: 1.5; }
+
+    /* DELEGATION NOTE */
+    .delegation-note {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold-dim);
       max-width: 680px;
     }
+    .delegation-note p { font-family: var(--body-font); font-size: 0.92rem; color: var(--text); margin-bottom: 0.5rem; }
+    .delegation-note p:last-child { margin-bottom: 0; color: var(--muted); font-size: 0.85rem; }
 
-    .country-stats {
-      display: flex;
-      gap: 3rem;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .stat {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    .stat-value {
-      font-family: var(--serif);
-      font-size: 1.6rem;
-      color: var(--gold);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* ─── CITIES ROW ─── */
-    .cities-section {
-      padding: 3.5rem 0;
-    }
-
-    .cities-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .city-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 1.2rem 1.4rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
-      text-decoration: none;
-      min-width: 110px;
-    }
-
-    .city-btn:hover,
-    .city-btn.active {
-      border-color: var(--gold-dim);
-      background: #1e1e1e;
-    }
-
-    .city-btn.active {
-      border-color: var(--gold);
-    }
-
-    .city-icon {
-      font-size: 2rem;
-      line-height: 1;
-    }
-
-    .city-label {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    .city-btn.active .city-label,
-    .city-btn:hover .city-label {
-      color: var(--gold);
-    }
-
-    /* ─── CITY PANEL ─── */
-    .city-panel {
-      display: none;
-      padding: 2.5rem 0 1rem;
-      border-top: 1px solid var(--border);
-      margin-top: 1.5rem;
-    }
-
-    .city-panel.open { display: block; }
-
-    .city-panel-header {
-      margin-bottom: 2rem;
-    }
-
-    .city-panel-header h2 {
-      font-family: var(--serif);
-      font-size: 1.8rem;
-      font-weight: 400;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-
-    .city-panel-header p {
-      color: var(--text);
-      max-width: 620px;
-      font-size: 0.95rem;
-    }
-
-    /* ─── PHOTO GRID ─── */
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 2px;
-      background: var(--border);
-      margin-top: 2rem;
-    }
-
-    .photo-item {
-      background: var(--surface);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .photo-placeholder {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      background: #181818;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      position: relative;
-    }
-
-    .photo-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 12px,
-        rgba(201,168,76,0.03) 12px,
-        rgba(201,168,76,0.03) 13px
-      );
-    }
-
-    .photo-placeholder-icon {
-      font-size: 1.6rem;
-      opacity: 0.15;
-      position: relative;
-    }
-
-    .photo-placeholder-text {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      opacity: 0.4;
-      position: relative;
-    }
-
-    /* Actual image (when supplied) */
-    .photo-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-      aspect-ratio: 4 / 3;
-    }
-
-    .photo-item:hover .photo-img { transform: scale(1.05); }
-
-    .photo-caption {
-      padding: 0.7rem 0.9rem;
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      line-height: 1.5;
-    }
-
-    /* ─── ACTIVITIES ─── */
-    .activity-tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .activity-tag {
-      font-family: var(--mono);
-      font-size: 0.63rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 0.3rem 0.7rem;
-      cursor: pointer;
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .activity-tag:hover,
-    .activity-tag.active {
-      border-color: var(--gold-dim);
-      color: var(--gold);
-    }
-
-    /* ─── BACK LINK ─── */
-    .back-section {
-      padding: 3rem 0 5rem;
-      border-top: 1px solid var(--border);
-      margin-top: 2rem;
-    }
-
-    .back-link {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
+    /* BACK + FOOTER */
+    .back-section { padding: 3rem 0 5rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+    .back-link { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .back-link:hover { color: var(--gold); }
     .back-link::before { content: '← '; }
-
-    /* ─── FOOTER ─── */
-    footer {
-      text-align: center;
-      padding: 2rem 3rem;
-      border-top: 1px solid var(--border);
-    }
-
-    footer p {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-    }
-
+    footer { text-align: center; padding: 2rem 3rem; border-top: 1px solid var(--border); }
+    footer p { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.12em; }
     footer a { color: var(--gold-dim); text-decoration: none; }
     footer a:hover { color: var(--gold); }
 
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 640px) {
       nav { padding: 1rem 1.4rem; }
       .hero-content { padding: 0 1.4rem 2.5rem; }
+      .journey-banner, .trip-banner { padding: 1rem 1.4rem; }
+      .trip-banner-divider { display: none; }
       .page-body { padding: 0 1.4rem; }
-      .cities-row { gap: 0.6rem; }
-      .city-btn { min-width: 90px; padding: 1rem; }
+      .city-btn { min-width: 90px; }
       .photo-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="https://manbeejay.github.io" class="nav-logo">BJ Chiawa</a>
     <a href="about-extended.html#travel" class="nav-back">Travel</a>
   </nav>
 
-  <!-- HERO -->
   <header class="hero">
-    <div class="hero-image" style="background-image: url('photos/china-hero.jpg')">
-      <!-- To add your hero photo:
-           1. Remove the "placeholder" class from .hero-image
-           2. Add inline style: style="background-image: url('photos/china-hero.jpg')"
-           Or place an <img> tag here and adjust with CSS -->
+    <div class="hero-image placeholder">
+      <!-- To add hero photo: remove "placeholder" class, add style="background-image: url('photos/china-hero.jpg')" -->
     </div>
     <div class="hero-flag" aria-hidden="true">🇨🇳</div>
     <div class="hero-photo-hint" aria-hidden="true">
-      <div class="hint-icon">🏔</div>
+      <div class="hint-icon">🏯</div>
       <p>Add hero photo</p>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-breadcrumb">
-        <a href="about-extended.html#travel">Travel</a>
-        &nbsp;/&nbsp; China
-      </p>
-      <h1><span class="hero-flag-inline">🇨🇳</span>China</h1>
-      <p class="hero-subtitle">Asia · 2015</p>
+      <p class="hero-breadcrumb"><a href="about-extended.html#travel">Travel</a> &nbsp;/&nbsp; China</p>
+      <h1><span class="hero-flag-inline">🇨🇳</span>China <span style="font-size:0.5em; font-family:var(--mono); color:var(--muted); letter-spacing:0.1em;">中国</span></h1>
+      <p class="hero-subtitle">East Asia · Business Trip · 2015</p>
     </div>
   </header>
 
-  <!-- BODY -->
+  <!-- FLIGHT ROUTE -->
+  <div class="journey-banner">
+    <span class="journey-stop">Enugu</span>
+    <span class="journey-arrow">→</span>
+    <span class="journey-stop">Niamey, Niger</span>
+    <span class="journey-arrow">→</span>
+    <span class="journey-stop">Addis Ababa <span class="dim">(Ethiopian Airlines stopover)</span></span>
+    <span class="journey-arrow">→</span>
+    <span class="journey-stop highlight">Shanghai</span>
+    <span class="journey-arrow">→</span>
+    <span class="journey-stop highlight">Xiangtan, Hunan 湘潭</span>
+    <span class="journey-arrow">→</span>
+    <span class="journey-stop highlight">Jinhua, Zhejiang 金华</span>
+    <span class="journey-arrow">→</span>
+    <span class="journey-stop highlight">Guangzhou 广州</span>
+  </div>
+
+  <!-- TRIP CONTEXT -->
+  <div class="trip-banner">
+    <div class="trip-banner-item">
+      <span class="trip-banner-label">Year</span>
+      <span class="trip-banner-value">2015</span>
+    </div>
+    <div class="trip-banner-divider"></div>
+    <div class="trip-banner-item">
+      <span class="trip-banner-label">Duration</span>
+      <span class="trip-banner-value">10 Days</span>
+    </div>
+    <div class="trip-banner-divider"></div>
+    <div class="trip-banner-item">
+      <span class="trip-banner-label">Purpose</span>
+      <span class="trip-banner-value">Business</span>
+    </div>
+    <div class="trip-banner-divider"></div>
+    <div class="trip-banner-item">
+      <span class="trip-banner-label">Travelling with</span>
+      <span class="trip-banner-value">Two business partners</span>
+    </div>
+    <div class="trip-banner-divider"></div>
+    <div class="trip-banner-item">
+      <span class="trip-banner-label">Cities</span>
+      <span class="trip-banner-value">Shanghai · Xiangtan · Jinhua · Guangzhou</span>
+    </div>
+  </div>
+
   <div class="page-body">
 
-    <!-- COUNTRY DESCRIPTION -->
     <section class="country-desc">
       <p class="section-label">Overview</p>
       <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+        A 10-day business trip in 2015, travelling with two partners. The airline was Ethiopian from Enugu via Niamey and Addis Ababa, landing in Shanghai. From there, a bullet train carried the group deep into Hunan Province, to Xiangtan, 湘潭, the base for most of the meetings.
       </p>
       <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+        The trip covered six companies in Xiangtan, a side trip to Jinhua in Zhejiang Province for three more, a return to Xiangtan, then a final stop in Guangzhou before heading home. Ten days, four cities, nine companies, and one bullet train ride that made every other train journey feel inadequate.
       </p>
-
+      <p>
+        Three months after the trip ended, a delegation from the Chinese partner companies came to Enugu. The relationship built on this visit remains active.
+      </p>
       <div class="country-stats">
         <div class="stat">
-          <span class="stat-value">1</span>
-          <span class="stat-label">Years</span>
+          <span class="stat-value">10</span>
+          <span class="stat-label">Days</span>
         </div>
         <div class="stat">
           <span class="stat-value">4</span>
           <span class="stat-label">Cities</span>
         </div>
         <div class="stat">
+          <span class="stat-value">9</span>
+          <span class="stat-label">Companies visited</span>
+        </div>
+        <div class="stat">
           <span class="stat-value">2015</span>
-          <span class="stat-label">Year visited</span>
+          <span class="stat-label">Year</span>
         </div>
       </div>
     </section>
 
-    <!-- CITIES -->
     <section class="cities-section">
       <p class="section-label">Cities</p>
 
-      <div class="cities-row" id="citiesRow">
-
+      <div class="cities-row">
         <button class="city-btn" data-city="shanghai" onclick="openCity(this)">
-          <span class="city-icon">🏙</span>
-          <span class="city-label">Shanghai</span>
+          <span class="city-icon">🌆</span>
+          <span class="city-label">Shanghai 上海</span>
+          <span class="city-days">Day 1</span>
         </button>
-
         <button class="city-btn" data-city="xiangtan" onclick="openCity(this)">
-          <span class="city-icon">🏘</span>
-          <span class="city-label">Xiangtan</span>
+          <span class="city-icon">🏭</span>
+          <span class="city-label">Xiangtan 湘潭</span>
+          <span class="city-days">Days 2 – 6, 8</span>
         </button>
-
-        <!-- Add more cities as needed:
-        <button class="city-btn" data-city="jinghua" onclick="openCity(this)">
-          <span class="city-icon">🏰</span>
-          <span class="city-label">Jinghua</span>
+        <button class="city-btn" data-city="jinhua" onclick="openCity(this)">
+          <span class="city-icon">🏙</span>
+          <span class="city-label">Jinhua 金华</span>
+          <span class="city-days">Day 7</span>
         </button>
-        -->
-
+        <button class="city-btn" data-city="guangzhou" onclick="openCity(this)">
+          <span class="city-icon">🌐</span>
+          <span class="city-label">Guangzhou 广州</span>
+          <span class="city-days">Day 9</span>
+        </button>
       </div>
 
-      <!-- SHANGHAI PANEL -->
-      <div class="city-panel" id="panel-london">
+      <!-- SHANGHAI -->
+      <div class="city-panel" id="panel-shanghai">
         <div class="city-panel-header">
-          <h2>Shanghai</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+          <h2>Shanghai 上海</h2>
+          <span class="days-badge">Day 1 · Arrival and overnight stay</span>
+          <p class="city-intro">
+            The group landed in Shanghai, connected with the Chinese business partners, and stayed one night before the bullet train south to Xiangtan. Shanghai offered a few hours of city exploration: the Bund waterfront, the towers of Pudong across the river, and the particular energy of a city that moves as though it is always slightly ahead of itself.
           </p>
-          <div class="activity-tag-row">
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
-            <span class="activity-tag">Lorem ipsum</span>
-          </div>
         </div>
 
-        <div class="photo-grid">
-          <div class="photo-item">
-            <!-- Replace with: <img src="photos/london-01.jpg" class="photo-img" alt="London"> -->
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Shanghai · Add caption here</p>
+        <div class="site-entry">
+          <h3>First impressions of Shanghai</h3>
+          <p>Arriving in Shanghai after a long flight through Addis Ababa, the city's scale registers immediately. The Bund runs along the Huangpu River with its row of colonial-era buildings on one side and the Pudong skyline, including the Oriental Pearl Tower and the Shanghai Tower, rising across the water. One evening was not enough, but it was a good introduction to what China was going to feel like.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">The Bund</span>
+            <span class="activity-tag">Pudong Skyline</span>
+            <span class="activity-tag">City Exploration</span>
+            <span class="activity-tag">Arrival Day</span>
           </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Shanghai · Add caption here</p>
-          </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Shanghai · Add caption here</p>
-          </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Shanghai · Add caption here</p>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Shanghai · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Shanghai · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Shanghai · Add caption</p></div>
           </div>
         </div>
       </div>
 
-      <!-- TOTTENHAM PANEL -->
-      <div class="city-panel" id="panel-tottenham">
+      <!-- XIANGTAN -->
+      <div class="city-panel" id="panel-xiangtan">
         <div class="city-panel-header">
-          <h2>Xiangtan</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+          <h2>Xiangtan 湘潭</h2>
+          <span class="days-badge">Days 2 – 6 and Day 8 · Business base · Waltz Hotel</span>
+          <p class="city-intro">
+            The bullet train from Shanghai to Xiangtan covered the distance in a fraction of the time any other mode of transport would have taken. Xiangtan is a prefecture-level city in Hunan Province, east-central China, historically significant as the birthplace of Chairman Mao Zedong, President Liu Shaoqi, Marshal Peng Dehuai, painter Qi Baishi, and scholar-general Zeng Guofan.
           </p>
+          <p class="wiki-note">
+            Xiangtan (湘潭) is a prefecture-level city in east-central Hunan province, south-central China. The hometowns of several founding leaders of the Chinese Communist Party, including Chairman Mao Zedong, President Liu Shaoqi, and Marshal Peng Dehuai, are under Xiangtan's administration. Source: Wikipedia.
+          </p>
+        </div>
+
+        <div class="site-entry">
+          <h3>Arrival and Accommodation</h3>
+          <p>The group was received by their hosts on arrival and secured accommodation at the Waltz Hotel, a five-star property in the city. The hotel served as the base for the six days of meetings in Xiangtan.</p>
           <div class="activity-tag-row">
-            <span class="activity-tag">The Technology Centre</span>
-            <span class="activity-tag">Web Programming</span>
-            <span class="activity-tag">Computer Networking</span>
-            <span class="activity-tag">Community</span>
+            <span class="activity-tag">Waltz Hotel</span>
+            <span class="activity-tag">Five Star</span>
+            <span class="activity-tag">Bullet Train from Shanghai</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Waltz Hotel, Xiangtan · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Xiangtan · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Bullet train · Add caption</p></div>
           </div>
         </div>
 
-        <div class="photo-grid">
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Xiangtan · Add caption here</p>
-          </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Xiangtan · Add caption here</p>
-          </div>
-          <div class="photo-item">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📷</span>
-              <span class="photo-placeholder-text">Add photo</span>
-            </div>
-            <p class="photo-caption">Xiangtan · Add caption here</p>
-          </div>
+        <div class="meetings-block">
+          <h4>Companies visited in Xiangtan</h4>
+          <ul class="meeting-list">
+
+            <li>
+              <div class="meeting-item">
+                <span class="meeting-company">Yuan's Seed Co., Ltd.</span>
+                <span class="meeting-sector">Seed rice production and agricultural supply</span>
+              </div>
+            </li>
+
+            <li>
+              <div class="meeting-item">
+                <span class="meeting-company">Hunan Lingben Environmental Protection Technology Co., Ltd.</span>
+                <span class="meeting-sector">Electric motorbikes and clean transport</span>
+              </div>
+            </li>
+
+            <li>
+              <div class="meeting-item">
+                <span class="meeting-company">Guaiguaitu Electric Bicycles</span>
+                <span class="meeting-sector">Electric bicycles</span>
+              </div>
+            </li>
+
+            <li>
+              <div class="meeting-item">
+                <span class="meeting-company">Zenith Mining &amp; Construction Co., Ltd.</span>
+                <span class="meeting-sector">Mining and construction equipment</span>
+              </div>
+            </li>
+
+            <li>
+              <div class="meeting-item">
+                <span class="meeting-company">Tidfore Heavy Equipment Group Co., Ltd.</span>
+                <span class="meeting-sector">Industrial machinery, heavy-duty material handling, port and waterway engineering systems. A major Chinese multinational manufacturing and integrated engineering corporation based in Hunan.</span>
+              </div>
+            </li>
+
+            <li>
+              <div class="meeting-item">
+                <span class="meeting-company">Zhuzhou Feilu High-Tech Materials Co., Ltd.</span>
+                <span class="meeting-sector">Waterproof coatings and terrace coating materials</span>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="photo-grid" style="margin-top:2rem;">
+          <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Xiangtan meetings · Add caption</p></div>
+          <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Xiangtan · Add caption</p></div>
+          <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Xiangtan · Add caption</p></div>
+          <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Xiangtan · Add caption</p></div>
         </div>
       </div>
+
+      <!-- JINHUA -->
+      <div class="city-panel" id="panel-jinhua">
+        <div class="city-panel-header">
+          <h2>Jinhua 金华</h2>
+          <span class="days-badge">Day 7 · Overnight stay · Zhejiang Province</span>
+          <p class="city-intro">
+            A one-day detour from Xiangtan to Jinhua in Zhejiang Province, to meet a third set of partners. Jinhua is a prefecture-level city of over seven million people, a major regional transport hub, and the city next to Yiwu, which runs the world's largest wholesale commodity market. Jinhua is also known as the source of Jinhua ham, a cured product with centuries of history.
+          </p>
+          <p class="wiki-note">
+            Jinhua is a historically rich prefecture-level city in central Zhejiang Province. It is known as the production base for Jinhua ham and as the home city adjacent to Yiwu, site of the world's largest wholesale market. Source: Wikipedia.
+          </p>
+        </div>
+
+        <div class="meetings-block">
+          <h4>Companies visited in Jinhua</h4>
+          <ul class="meeting-list">
+
+            <li>
+              <div class="meeting-item">
+                <span class="meeting-company">Summer Time Industry &amp; Trade Co., Ltd.</span>
+                <span class="meeting-sector">Street art installations, mobile carts, and commercial kiosks</span>
+              </div>
+            </li>
+
+            <li>
+              <div class="meeting-item">
+                <span class="meeting-company">Zhejiang Jirui Industry &amp; Trade Co., Ltd.</span>
+                <span class="meeting-sector">Security doors and related products</span>
+              </div>
+            </li>
+
+            <li>
+              <div class="meeting-item">
+                <span class="meeting-company">Kingle Aluminum Technology Stock Co., Ltd.</span>
+                <span class="meeting-sector">Aluminum profiles, aluminum doors and windows, curtain wall systems</span>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="photo-grid" style="margin-top:2rem;">
+          <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Jinhua · Add caption</p></div>
+          <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Jinhua · Add caption</p></div>
+          <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Jinhua · Add caption</p></div>
+        </div>
+      </div>
+
+      <!-- GUANGZHOU -->
+      <div class="city-panel" id="panel-guangzhou">
+        <div class="city-panel-header">
+          <h2>Guangzhou 广州</h2>
+          <span class="days-badge">Day 9 · Final stop before departure</span>
+          <p class="city-intro">
+            The last city before the return flight home. Guangzhou is one of China's largest cities and a major trading hub. The day included a meeting with the then president of the Association of Nigerians in China, a useful connection for anyone doing business across the two countries. Time was also spent in the electronics and general goods markets, which Guangzhou runs in quantity and variety that few cities can match.
+          </p>
+        </div>
+
+        <div class="site-entry">
+          <h3>Association of Nigerians in China</h3>
+          <p>A meeting with the president of the Association of Nigerians in China provided useful context on the realities of doing business between Nigeria and China, the logistics, the relationships, the friction points, and the opportunities. The Nigerian community in Guangzhou is one of the largest African communities in China.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Nigerian Community</span>
+            <span class="activity-tag">Business Networking</span>
+            <span class="activity-tag">Diaspora Connection</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Guangzhou · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Guangzhou · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Guangzhou markets · Add caption</p></div>
+          </div>
+        </div>
+
+        <div class="site-entry">
+          <h3>Tech and General Markets</h3>
+          <p>Guangzhou's electronics markets are worth a separate visit on their own. Components, gadgets, finished goods, and everything in between, spread across multi-storey buildings in quantities that take time to absorb. Day 9 was the last day of ten, so the exploration was limited, but enough to understand why Guangzhou sits at the centre of so much global trade.</p>
+          <div class="activity-tag-row">
+            <span class="activity-tag">Electronics Markets</span>
+            <span class="activity-tag">Tech Gadgets</span>
+            <span class="activity-tag">Trade Hub</span>
+          </div>
+          <div class="photo-grid">
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Guangzhou markets · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Guangzhou · Add caption</p></div>
+            <div class="photo-item"><div class="photo-placeholder"><span class="photo-placeholder-icon">📷</span><span class="photo-placeholder-text">Add photo</span></div><p class="photo-caption">Guangzhou · Add caption</p></div>
+          </div>
+        </div>
+
+      </div><!-- /panel-guangzhou -->
 
     </section>
 
-    <!-- BACK -->
+    <!-- DELEGATION NOTE -->
+    <div class="delegation-note">
+      <p>Three months after this trip, a select team from the Chinese partner companies came to Enugu to reciprocate the visit. The relationships built in Xiangtan, Jinhua, and Guangzhou remain active.</p>
+      <p>The Nigerian economy has made follow-through difficult in the years since, but the foundation is there.</p>
+    </div>
+
     <div class="back-section">
       <a href="about-extended.html#travel" class="back-link">Back to Travel</a>
     </div>
 
   </div><!-- /page-body -->
 
-  <!-- FOOTER -->
   <footer>
-    <p>
-      Engr. BJ Chiawa · <a href="about-extended.html">Full Profile</a> · <a href="https://manbeejay.github.io">Home</a>
-    </p>
+    <p>Engr. BJ Chiawa · <a href="about-extended.html">Full Profile</a> · <a href="https://manbeejay.github.io">Home</a></p>
   </footer>
 
   <script>
     function openCity(btn) {
-      // Close all panels and deactivate all buttons
+      const wasActive = btn.classList.contains('active');
       document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.city-panel').forEach(p => p.classList.remove('open'));
-
-      const cityId = btn.dataset.city;
-      const panel = document.getElementById('panel-' + cityId);
-
-      // If clicking the already-active city, just close (toggle off)
-      if (btn.classList.contains('active')) {
-        btn.classList.remove('active');
-        return;
-      }
-
+      if (wasActive) return;
       btn.classList.add('active');
+      const panel = document.getElementById('panel-' + btn.dataset.city);
       if (panel) {
         panel.classList.add('open');
-        // Smooth scroll to panel
-        setTimeout(() => {
-          panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 50);
+        setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
       }
     }
   </script>
