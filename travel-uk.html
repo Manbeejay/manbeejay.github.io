@@ -115,7 +115,7 @@
 
     /* PHOTO GRID */
     .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 2px; background: var(--border); margin-top: 2rem; }
-    .photo-item { background: var(--surface); position: relative; overflow: hidden; }
+    .photo-item { background: var(--surface); position: relative; overflow: visible; }
     .photo-placeholder { width: 100%; aspect-ratio: 4/3; background: #181818; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; position: relative; }
     .photo-placeholder::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(201,168,76,0.03) 12px, rgba(201,168,76,0.03) 13px); }
     .photo-placeholder-icon { font-size: 1.5rem; opacity: 0.14; position: relative; }
